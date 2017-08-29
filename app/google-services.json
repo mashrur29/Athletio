@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "688464344610",
+    "firebase_url": "https://athletio-83680.firebaseio.com",
+    "project_id": "athletio-83680",
+    "storage_bucket": "athletio-83680.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688464344610:android:3c8a4f3fba9e7d17",
+        "android_client_info": {
+          "package_name": "com.blogspot.athletio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688464344610-253kr2dcummd9p9e9oisbqhukcbhcbb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blogspot.athletio",
+            "certificate_hash": "ba5c60d0fc47498a92d84cb8de076ddf22bcc6c8"
+          }
+        },
+        {
+          "client_id": "688464344610-ivegnjr9c5gjfubrqp0n5jheje595gt1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY87AgNkEjkEimz-Lg37RMTF1YWHc6D6Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688464344610-ivegnjr9c5gjfubrqp0n5jheje595gt1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
