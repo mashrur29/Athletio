@@ -62,7 +62,7 @@ public class ExercisesActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tv.setText(exercises.toString()+"\n"+new Date());
+        tv.setText(exercises.toString());
     }
 
     private void setupUI() {
