@@ -23,9 +23,11 @@ public class AdditionalInfoInputActivity extends AppCompatActivity {
     User user;
     SharedPrefData sharedPrefData;
 
-
+    //UI variables - START
     EditText birthDate,birthMonth,birthYear,gender,height,weight;
     Button mFirebaseButton;
+    //UI variables - END
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,8 @@ public class AdditionalInfoInputActivity extends AppCompatActivity {
         mFirebaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //check inputs
 
                 user=new User(mAuth.getCurrentUser().getDisplayName(),Integer.parseInt(birthDate.getText().toString()),Integer.parseInt(birthMonth.getText().toString()),Integer.parseInt(birthYear.getText().toString()),gender.getText().toString(),mAuth.getCurrentUser().getEmail(),Integer.parseInt(height.getText().toString()),Integer.parseInt(weight.getText().toString()));
                 mDatabase.setValue(user);

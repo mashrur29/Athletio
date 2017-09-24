@@ -27,7 +27,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignInActivity extends AppCompatActivity {
+    //UI variables - START
     SignInButton mSignInButton;
+    //UI varibles - END
+
     GoogleApiClient mGoogleApiClient;
     FirebaseAuth mAuth;
     final int RC_SIGN_IN=2;
@@ -43,16 +46,10 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        //setup
-        mSignInButton=(SignInButton)findViewById(R.id.signinbutton);
-        //end setup
+
+        setUpUI();
+
         mAuth=FirebaseAuth.getInstance();
-        mSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
-        });
 
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
@@ -96,7 +93,7 @@ public class SignInActivity extends AppCompatActivity {
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(SignInActivity.this,"wrong00",Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInActivity.this,"NO Internet Connection",Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -117,5 +114,15 @@ public class SignInActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    void setUpUI(){
+        mSignInButton=(SignInButton)findViewById(R.id.signinbutton);
+        mSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
     }
 }
