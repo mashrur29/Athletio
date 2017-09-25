@@ -9,6 +9,9 @@ public class Exercise {
     String description;
     String category;
 
+    public Exercise() {
+    }
+
     public Exercise(String title, String description, String category) {
         this.title = title;
         this.description = description;
