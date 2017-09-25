@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenuActivity extends AppCompatActivity {
-    Button trackworkoutbt,socialbt,fitchatbt,settingsbt,exercisessbt,eventbt;
+    Button trackworkoutbt,socialbt,fitchatbt,settingsbt,exercisessbt,eventbt,createeventbt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +63,13 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainMenuActivity.this,EventsActivity.class));
+            }
+        });
+        createeventbt=(Button)findViewById(R.id.mainmenucreateeventbt);
+        createeventbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenuActivity.this,CreateEventActivity.class));
             }
         });
     }
