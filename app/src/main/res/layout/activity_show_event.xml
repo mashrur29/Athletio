@@ -4,11 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.blogspot.athletio.CreateEventActivity">
+    android:orientation="vertical"
+    tools:context="com.blogspot.athletio.ShowEventActivity">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="click"
-        android:id="@+id/createeventbt"/>
+        android:id="@+id/showeventbt"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showeventtv"/>
 
 </LinearLayout>
