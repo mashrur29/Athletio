@@ -1,8 +1,10 @@
 package com.blogspot.athletio;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,15 +40,15 @@ public class MyWorkoutsActivity extends AppCompatActivity {
                 for(DataSnapshot d : dataSnapshot.getChildren()) {
                     workoutKeys.add(d.getValue().toString());
                 }
-                for (String key:workoutKeys){
+                for (final String key:workoutKeys){
                     mDatabase.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshotw) {
 
                             if(dataSnapshotw.getValue()!=null)
                             {
-
                                 Workout workout=new Workout(dataSnapshotw.getValue().toString());
+                                workout.key=key;
                                 workouts.add(workout);
                                 updateUI();
                             }
@@ -75,6 +77,17 @@ public class MyWorkoutsActivity extends AppCompatActivity {
     void setupUI(){
 
         tv=(TextView)findViewById(R.id.myworkoutstv);
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(workouts.get(0)!=null)
+                {
+                    Intent intent=new Intent(MyWorkoutsActivity.this,ShowWorkoutActivity.class);
+                    intent.putExtra("WorkoutKey",workouts.get(0).key);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     void updateUI(){

@@ -24,6 +24,7 @@ public class Workout {
     double distanceInMeters;
     long timeInSec;
     int weight;
+    String key;
     HashMap<String ,LatLng> map;
 
 
