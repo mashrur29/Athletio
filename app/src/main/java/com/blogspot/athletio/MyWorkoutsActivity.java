@@ -82,9 +82,7 @@ public class MyWorkoutsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(workouts.get(0)!=null)
                 {
-                    Intent intent=new Intent(MyWorkoutsActivity.this,ShowWorkoutActivity.class);
-                    intent.putExtra("WorkoutKey",workouts.get(0).key);
-                    startActivity(intent);
+                    showWorkout(workouts.get(0).key);
                 }
             }
         });
@@ -94,6 +92,12 @@ public class MyWorkoutsActivity extends AppCompatActivity {
 
         tv.setText(workouts.toString());
 
+    }
+
+    void showWorkout(String key){
+        Intent intent=new Intent(MyWorkoutsActivity.this,ShowWorkoutActivity.class);
+        intent.putExtra("WorkoutKey",key);
+        startActivity(intent);
     }
 
 }

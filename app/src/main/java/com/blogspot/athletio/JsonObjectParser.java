@@ -54,7 +54,7 @@ public class JsonObjectParser {
         return Integer.parseInt(getString(str));
     }
     public double getDouble(String str){return Double.parseDouble(getString(str));}
-    public double getLong(String str){return Long.parseLong(getString(str));}
+    public long getLong(String str){return Long.parseLong(getString(str));}
     public HashMap<String, String> getMap(){return map;}
     public HashMap<String,Integer> getIntMap(){
         HashMap<String,Integer> ret=new HashMap<String,Integer>();
