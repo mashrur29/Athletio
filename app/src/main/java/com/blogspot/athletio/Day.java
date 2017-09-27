@@ -22,7 +22,7 @@ public class Day {
 
     public Day() {
         this.day = Calendar.getInstance().get(Calendar.DATE);
-        this.month=Calendar.getInstance().get(Calendar.MONTH);
+        this.month=Calendar.getInstance().get(Calendar.MONTH)+1;
         this.year=Calendar.getInstance().get(Calendar.YEAR);
     }
     public Day(String str) {

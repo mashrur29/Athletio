@@ -97,6 +97,9 @@ public class AdditionalInfoInputActivity extends AppCompatActivity {
 
                 user=new User(mAuth.getCurrentUser().getDisplayName(),Integer.parseInt(birthDate.getText().toString()),Integer.parseInt(birthMonth.getText().toString()),Integer.parseInt(birthYear.getText().toString()),gender.getText().toString(),mAuth.getCurrentUser().getEmail(),Integer.parseInt(height.getText().toString()),Integer.parseInt(weight.getText().toString()));
                 mDatabase.setValue(user);
+                FirebaseDatabase.getInstance().getReference().child("Userlist").child(mAuth.getCurrentUser().getUid()).child("Name").setValue(mAuth.getCurrentUser().getDisplayName());
+                FirebaseDatabase.getInstance().getReference().child("Userlist").child(mAuth.getCurrentUser().getUid()).child("Photo").setValue(mAuth.getCurrentUser().getPhotoUrl().toString());
+
                 sharedPrefData.saveUser(user);
 
                 startService(new Intent(AdditionalInfoInputActivity.this,FirebaseUploadService.class));

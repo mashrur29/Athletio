@@ -2,6 +2,7 @@ package com.blogspot.athletio;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabase,mUserDatabase;
     FirebaseAuth mAuth;
 
 
@@ -29,9 +30,9 @@ public class CreateEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_event);
         setupUI();
 
-
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Events");
+        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
 
 
     }
@@ -41,9 +42,22 @@ public class CreateEventActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabase.push().setValue(new Event(new Day(),12,23,mAuth.getCurrentUser().getUid().toString(),new LatLng(1.2,2.3),new LatLng(5.2,6.3),Event.RUNTYPE,200,600000));
-                mDatabase.push().setValue(new Event(new Day(),11,32,mAuth.getCurrentUser().getUid().toString(),new LatLng(1.2,2.3),Event.CRICKETTYPE,600000));
+                createEvent(new Day(),12,13,new LatLng(1.3,2.2),new LatLng(1.3,2.2),Event.RUNTYPE,200,1000,"wedtyr","ryrtwed");
+                createEvent(new Day(),12,13,new LatLng(1.3,2.2),Event.FOOTBALLTYPE,1000,"weod","dweryrd");
+
             }
         });
+    }
+    private void createEvent(Day day,int hour,int min,LatLng start,LatLng stop, int type, double distanceInMeters, long durationInSec,String title,String description){
+        String key=mDatabase.push().getKey();
+        mDatabase.child(key).setValue(new Event(day,hour,min,mAuth.getCurrentUser().getUid().toString(),mAuth.getCurrentUser().getDisplayName(),start,stop,type,distanceInMeters,durationInSec,title,description));
+        mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("Events").child(key).setValue(key);
+
+    }
+    private void createEvent(Day day,int hour,int min,LatLng start, int type,  long durationInSec,String title,String description){
+        String key=mDatabase.push().getKey();
+        mDatabase.child(key).setValue(new Event(day,hour,min,mAuth.getCurrentUser().getUid().toString(),mAuth.getCurrentUser().getDisplayName(),start,type,durationInSec,title,description));
+        mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("Events").child(key).setValue(key);
+
     }
 }

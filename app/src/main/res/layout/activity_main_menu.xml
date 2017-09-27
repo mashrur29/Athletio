@@ -35,6 +35,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Show Event Reminders"
+        android:id="@+id/mainmenushoweventreminderbt"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Create Event"
         android:id="@+id/mainmenucreateeventbt"/>
     <Button

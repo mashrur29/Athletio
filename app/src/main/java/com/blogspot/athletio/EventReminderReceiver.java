@@ -32,6 +32,9 @@ public class EventReminderReceiver extends BroadcastReceiver{
         stackBuilder.addParentStack(ShowEventActivity.class);
         stackBuilder.addNextIntent(notificationIntent);
 
+        SharedPrefData sharedPrefData=new SharedPrefData(context);
+        sharedPrefData.removeEventKey(key);
+
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);

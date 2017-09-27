@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenuActivity extends AppCompatActivity {
-    Button trackworkoutbt,socialbt,fitchatbt,settingsbt,exercisessbt,eventbt,createeventbt,myworkoutsbt;
+    Button trackworkoutbt,socialbt,fitchatbt,settingsbt,exercisessbt,eventbt,createeventbt,myworkoutsbt,showeventsbt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +78,13 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 startActivity(new Intent(MainMenuActivity.this,MyWorkoutsActivity.class));
+            }
+        });
+        showeventsbt=(Button)findViewById(R.id.mainmenushoweventreminderbt);
+        showeventsbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenuActivity.this,ShowEventRemindersActivity.class));
             }
         });
     }

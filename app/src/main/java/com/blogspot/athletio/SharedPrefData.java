@@ -6,6 +6,7 @@ import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -32,9 +33,43 @@ public class SharedPrefData {
     public static final String FRIENDS="friends";
     public static final String WORKOUTS="workouts";
     public static final String POSTS="posts";
+    public static final String EVENTS="events";
+    public static final String LATEST="latest";
 
     public SharedPrefData(Context context) {
         this.context = context;
+    }
+    public void saveEventReminderKey(String key,int reqId){
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(key, reqId);
+        editor.commit();
+    }
+    public Vector<String> getEventReminderKeys(){
+
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        Map<String,?> mp= pref.getAll();
+        Vector<String> ret=new Vector<String>();
+        for(Map.Entry<String,?> entry : mp.entrySet()){
+            ret.add(entry.getKey().toString());
+
+        }
+        ret.remove(SharedPrefData.LATEST);
+        return ret;
+    }
+    public int getEventReminderKey(String key){
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        return pref.getInt(key,-1);
+    }
+    public boolean hasEventReminderKey(String key){
+        return getEventReminderKey(key)!=-1;
+    }
+    public void removeEventKey(String key){
+
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.remove(key);
+        editor.apply();
     }
     public void saveUser(User user){
         clear();
