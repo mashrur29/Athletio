@@ -41,7 +41,7 @@ public class MainMenuActivity extends AppCompatActivity {
         socialbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(MainMenuActivity.this,NewsFeedActivity.class));
             }
         });
         fitchatbt=(Button)findViewById(R.id.mainmenufitchatbt);

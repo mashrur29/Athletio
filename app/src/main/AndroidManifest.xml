@@ -35,8 +35,9 @@
         <service
             android:name=".FirebaseUploadService"
             android:exported="false" />
-        <service android:name=".StepDetectorService"
-            android:exported="false"/>
+        <service
+            android:name=".StepDetectorService"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -51,7 +52,23 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ExercisesActivity" />
         <activity android:name=".RunningTrackActivity" />
-        <activity android:name=".CyclingTrackActivity"></activity>
+        <activity android:name=".CyclingTrackActivity" />
+        <activity android:name=".EventsActivity" />
+        <activity android:name=".CreateEventActivity" />
+        <activity android:name=".MyWorkoutsActivity" />
+        <activity android:name=".ShowWorkoutActivity" />
+        <activity android:name=".ShowEventActivity" />
+
+        <receiver android:name=".EventReminderReceiver">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ShowEventRemindersActivity" />
+        <activity android:name=".ShowUserListActivity" />
+        <activity android:name=".NewsFeedActivity" />
+        <activity android:name=".ShowProfileActivity"></activity>
     </application>
 
 </manifest>
