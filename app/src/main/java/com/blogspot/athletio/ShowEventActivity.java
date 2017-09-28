@@ -108,6 +108,11 @@ public class ShowEventActivity extends AppCompatActivity {
                 Toast.makeText(ShowEventActivity.this,"Event is Running",Toast.LENGTH_SHORT).show();
                 return;
             }
+            if(event.getStatus()==Event.CANCELLED)
+            {
+                Toast.makeText(ShowEventActivity.this,"Event is Cancelled",Toast.LENGTH_SHORT).show();
+                return;
+            }
 
 
             int id=sharedPrefdata.getEventReminderKey(SharedPrefData.LATEST)+1;

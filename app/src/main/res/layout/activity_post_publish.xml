@@ -5,21 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.blogspot.athletio.CreateEventActivity">
+    tools:context="com.blogspot.athletio.PostPublishActivity">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="click"
-        android:id="@+id/createeventbt"/>
+        android:text="upload photo"
+        android:id="@+id/postpublishuploadphotobt"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/createeventchoosestartlatbt"/>
-    <Button
+        android:id="@+id/postpublishbt"/>
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="stop"
-        android:id="@+id/createeventchoosestoplatbt"/>
+        android:id="@+id/postpublishiv"/>
 
 </LinearLayout>
