@@ -56,11 +56,13 @@ public class AdditionalInfoInputActivity extends AppCompatActivity {
 
 
         if(sharedPrefData.getSaved()==true){
-
             startActivity(new Intent(AdditionalInfoInputActivity.this,MainActivity.class));
             finish();
+
         }
         else{
+
+
             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -75,6 +77,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity {
 
                         startActivity(new Intent(AdditionalInfoInputActivity.this,MainActivity.class));
                         finish();
+
                     }
                     else{
                         loadForm();
