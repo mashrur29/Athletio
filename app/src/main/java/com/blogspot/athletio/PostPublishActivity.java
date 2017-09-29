@@ -21,6 +21,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
+
 public class PostPublishActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -65,12 +67,12 @@ public class PostPublishActivity extends AppCompatActivity {
 
     private void publishPost(String body) {
         if(type==Post.PHOTO){
-            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),postId,body,photoUri,Post.PHOTO);
+            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),postId,body,photoUri,Post.PHOTO,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
             mDatabase.child(postId).setValue(post);
         }
         else{
             postId=mDatabase.push().getKey();
-            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),postId,body,Post.TEXT);
+            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),postId,body,Post.TEXT,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
             mDatabase.child(postId).setValue(post);
         }
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("posts").child(postId).setValue(postId);

@@ -80,18 +80,30 @@ public class Workout {
         return Integer.parseInt("0");
     }
 
+    LatLng getAt(int i){
+        String str="index"+i;
+        return (LatLng)map.get(str);
+    }
+
     Vector<LatLng> getVector(){
         Vector<LatLng>ret=new Vector<LatLng>();
-        Map<String, LatLng> treemap = new TreeMap<>(this.map);
-        for(Map.Entry m:treemap.entrySet()){
-            // String ind=m.getKey().toString();
-            //ind=ind.replace("index","");
-            //int index=Integer.parseInt(ind);
-            LatLng ll=(LatLng) m.getValue();
-            ret.add(ll);
+        for(int i=0;i<map.size();i++){
+            ret.add(getAt(i));
+        }
+        return ret;
+
+    }
+
+    Vector<MapPoint> getmpVector(){
+        Vector<MapPoint>ret=new Vector<MapPoint>();
+        for(int i=0;i<map.size();i++){
+            LatLng latLng=getAt(i);
+            MapPoint mapPoint=new MapPoint(latLng.latitude,latLng.longitude);
+            ret.add(mapPoint);
         }
         return ret;
     }
+
 
     @Override
     public String toString() {

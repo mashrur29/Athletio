@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
@@ -221,7 +222,7 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
         b=false;
         String key = mDatabase.push().getKey();
         SharedPreferences pref = CyclingTrackActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
-        Workout pushWorkout=new Workout(Workout.CYCLINGTYPE,dist, time,pref.getInt(SharedPrefData.WEIGHT, 0),latLngs);
+        Workout pushWorkout=new Workout(Workout.CYCLINGTYPE,dist, time,pref.getInt(SharedPrefData.WEIGHT, 0),latLngs, new Day(),Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
         mDatabase.child(key).setValue(pushWorkout);
         SharedPreferences workoutsPref = CyclingTrackActivity.this.getSharedPreferences(SharedPrefData.WORKOUTS, MODE_PRIVATE);
         SharedPreferences.Editor workoutseditor =  workoutsPref.edit();
