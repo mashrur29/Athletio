@@ -26,25 +26,34 @@ public class Workout {
     int weight;
     String key;
     HashMap<String ,LatLng> map;
+    Day day;
+    int hour;
+    int min;
 
 
 
-    public Workout(int TYPE, double distanceInMeters, long timeInSec, int weight, Vector<LatLng> map) {
+    public Workout(int TYPE, double distanceInMeters, long timeInSec, int weight, Vector<LatLng> map,Day day,int hour,int min) {
         this.TYPE = TYPE;
         this.distanceInMeters = distanceInMeters;
         this.timeInSec = timeInSec;
         this.weight = weight;
+        this.day=day;
+        this.hour=hour;
+        this.min=min;
         this.map=new HashMap<String, LatLng>();
         for (int i=0;i<map.size();i++){
             this.map.put("index"+Integer.toString(i),map.get(i));
         }
     }
 
-    public Workout(int TYPE, double distanceInMeters, long timeInSec, int weight) {
+    public Workout(int TYPE, double distanceInMeters, long timeInSec,Day day, int weight,int hour,int min) {
         this.TYPE = TYPE;
         this.distanceInMeters = distanceInMeters;
         this.timeInSec = timeInSec;
         this.weight = weight;
+        this.day=day;
+        this.hour=hour;
+        this.min=min;
     }
     public Workout(String jsonStr) {
         JsonObjectParser jsonObjectParser=new JsonObjectParser(jsonStr);
@@ -52,7 +61,9 @@ public class Workout {
         this.TYPE=jsonObjectParser.getInt("TYPE");
         this.timeInSec= (long) jsonObjectParser.getLong("timeInSec");
         this.weight=jsonObjectParser.getInt("weight");
-
+        this.day=new Day(jsonObjectParser.getString("day"));
+        this.hour=jsonObjectParser.getInt("hour");
+        this.min=jsonObjectParser.getInt("min");
         if(this.TYPE!=Workout.VRTYPE){
             this.map=new HashMap<String, LatLng>();
             HashMap<String,String> hm=new JsonObjectParser(jsonObjectParser.getString("map")).getMap();
@@ -84,12 +95,16 @@ public class Workout {
 
     @Override
     public String toString() {
-        return "{" +
+        return "Workout{" +
                 "TYPE=" + TYPE +
                 ", distanceInMeters=" + distanceInMeters +
                 ", timeInSec=" + timeInSec +
                 ", weight=" + weight +
+                ", key='" + key + '\'' +
                 ", map=" + map +
+                ", day=" + day +
+                ", hour=" + hour +
+                ", min=" + min +
                 '}';
     }
 }
