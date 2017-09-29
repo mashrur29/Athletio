@@ -36,17 +36,15 @@ public class ExercisesActivity extends AppCompatActivity {
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Exersices");
 
         setupUI();
+
+        exercises=new Vector<Exercise>();
+
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot!=null){
-                    exercises=new Vector<Exercise>();
-                    JsonObjectParser jsonObjectParser=new JsonObjectParser(dataSnapshot.getValue().toString());
-                    for(Map.Entry m:jsonObjectParser.getMap().entrySet()){
-                        JsonObjectParser jsonObjectParser1=new JsonObjectParser(m.getValue().toString());
-                        for(Map.Entry p:jsonObjectParser1.getMap().entrySet()){
-                            exercises.add(new Exercise(p.getKey().toString(),p.getValue().toString(),m.getKey().toString()));
-                        }
+                    for(DataSnapshot d:dataSnapshot.getChildren()){
+                        exercises.add(new Exercise(d.getValue().toString()));
                     }
                     updateUI();
                 }

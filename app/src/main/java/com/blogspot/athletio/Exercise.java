@@ -17,6 +17,12 @@ public class Exercise {
         this.description = description;
         this.category = category;
     }
+    public Exercise(String jsonStr){
+        JsonObjectParser jsonObjectParser=new JsonObjectParser(jsonStr);
+        this.title=jsonObjectParser.getString("title");
+        this.description=jsonObjectParser.getString("description");
+        this.category=jsonObjectParser.getString("category");
+    }
 
     public String getTitle() {
         return title;
