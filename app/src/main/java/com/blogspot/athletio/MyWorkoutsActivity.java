@@ -28,7 +28,7 @@ public class MyWorkoutsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_workouts);
         mAuth=FirebaseAuth.getInstance();
-        mWorkoutkeyDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("userData").child("workouts");
+        mWorkoutkeyDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("workouts");
         mDatabase=FirebaseDatabase.getInstance().getReference().child("workouts");
 
         setupUI();

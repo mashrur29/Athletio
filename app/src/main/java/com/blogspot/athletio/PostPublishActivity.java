@@ -2,6 +2,7 @@ package com.blogspot.athletio;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
@@ -32,12 +33,16 @@ public class PostPublishActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     int type=Post.TEXT;
 
+    SharedPreferences postsRef;
+    SharedPreferences.Editor postsMapeditor ;
+
     ImageView imageView;
     Button postpublishbt,uploadphtobt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_publish);
+
 
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Posts");
@@ -75,7 +80,8 @@ public class PostPublishActivity extends AppCompatActivity {
             Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),postId,body,Post.TEXT,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
             mDatabase.child(postId).setValue(post);
         }
-        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("posts").child(postId).setValue(postId);
+
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("Posts").child(postId).setValue(postId);
         Toast.makeText(PostPublishActivity.this,"Posted Successfully",Toast.LENGTH_SHORT).show();
         finish();
 

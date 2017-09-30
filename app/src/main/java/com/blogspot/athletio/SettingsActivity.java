@@ -53,21 +53,8 @@ public class SettingsActivity extends AppCompatActivity {
                 calorieMapeditor.clear();
                 calorieMapeditor.commit();
 
-                SharedPreferences friendsPref = context.getSharedPreferences(SharedPrefData.FRIENDS, MODE_PRIVATE);
-                SharedPreferences.Editor friendseditor =  friendsPref.edit();
-                friendseditor.clear();
-                friendseditor.commit();
-
-                SharedPreferences workoutsPref = context.getSharedPreferences(SharedPrefData.WORKOUTS, MODE_PRIVATE);
-                SharedPreferences.Editor workoutseditor =  workoutsPref.edit();
-                workoutseditor.clear();
-                workoutseditor.commit();
 
 
-                SharedPreferences postsPref = context.getSharedPreferences(SharedPrefData.POSTS, MODE_PRIVATE);
-                SharedPreferences.Editor postseditor =  postsPref.edit();
-                postseditor.clear();
-                postseditor.commit();
             }
         });
         birthDate=(EditText)findViewById(R.id.settingsbirthdate);

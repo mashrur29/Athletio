@@ -224,10 +224,7 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
         SharedPreferences pref = CyclingTrackActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
         Workout pushWorkout=new Workout(Workout.CYCLINGTYPE,dist, time,pref.getInt(SharedPrefData.WEIGHT, 0),latLngs, new Day(),Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
         mDatabase.child(key).setValue(pushWorkout);
-        SharedPreferences workoutsPref = CyclingTrackActivity.this.getSharedPreferences(SharedPrefData.WORKOUTS, MODE_PRIVATE);
-        SharedPreferences.Editor workoutseditor =  workoutsPref.edit();
-        workoutseditor.putString(key,key);
-        workoutseditor.commit();
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("workouts").child(key).setValue(key);
     }
 
     public double haversine(

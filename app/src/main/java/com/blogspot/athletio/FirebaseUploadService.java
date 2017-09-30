@@ -35,7 +35,8 @@ public class FirebaseUploadService extends Service {
                 synchronized (mDatabase) {
                     if (sharedPrefData.getUser() != null){
 
-                        mDatabase.setValue(sharedPrefData.getUser());
+                        mDatabase.child("userData").setValue(sharedPrefData.getUser().userData);
+                        mDatabase.child("userInfo").setValue(sharedPrefData.getUser().getUserInfo());
                         Log.d(TAG, sharedPrefData.getUser().toString());
                     }
 
