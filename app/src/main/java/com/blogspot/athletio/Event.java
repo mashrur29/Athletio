@@ -20,7 +20,6 @@ public class Event {
     public static final int CRICKETTYPE=3;
     public static final int WALKTYPE=4;
     public static final int OTHERTYPE=5;
-    public static final String TAG="EVENT";
     public static final int ACTIVE=0;
     public static final int RUNNING=1;
     public static final int CANCELLED=2;
