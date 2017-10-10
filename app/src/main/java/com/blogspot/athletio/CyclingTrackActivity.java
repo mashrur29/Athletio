@@ -47,7 +47,7 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
     Thread t;
     boolean b=true;
 
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabase,mCurrentWorkoutDb;
     FirebaseAuth mAuth;
 
 
@@ -59,6 +59,9 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
 
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("workouts");
+        mCurrentWorkoutDb=FirebaseDatabase.getInstance().getReference().child("currentworkouts");
+        String key=mCurrentWorkoutDb.push().getKey();
+        mCurrentWorkoutDb=mCurrentWorkoutDb.child(key);
 
 
         setupUI();
@@ -103,6 +106,7 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
                         mgoogleMap.animateCamera(update);
                     }
                     latLngs.add(ll);
+                    mCurrentWorkoutDb.setValue(new SmallWorkout(1,ll,mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName()));
                     mgoogleMap.clear();
                     MarkerOptions markerStart=new MarkerOptions().title("Start").position(latLngs.get(0));
                     mgoogleMap.addMarker(markerStart);
@@ -224,7 +228,9 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
         SharedPreferences pref = CyclingTrackActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
         Workout pushWorkout=new Workout(Workout.CYCLINGTYPE,dist, time,pref.getInt(SharedPrefData.WEIGHT, 0),latLngs, new Day(),Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
         mDatabase.child(key).setValue(pushWorkout);
+        locationManager.removeUpdates(locationListener);
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("workouts").child(key).setValue(key);
+        mCurrentWorkoutDb.setValue(null);
     }
 
     public double haversine(

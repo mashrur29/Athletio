@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,9 @@ import java.util.Date;
 import java.util.Vector;
 
 public class RunningTrackActivity  extends AppCompatActivity implements OnMapReadyCallback {
+
+    final static int INTERVAL=5000;
+
     GoogleMap mgoogleMap;
     Vector<LatLng> latLngs=new Vector<LatLng>();
     LocationManager locationManager;
@@ -45,12 +49,11 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
     int tick=0;
     boolean first=true;
     long time=0;
-    final static int INTERVAL=5000;
     Date initTime;
     Thread t;
     boolean b=true;
 
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabase,mCurrentWorkoutDb;
     FirebaseAuth mAuth;
 
     TextView tv;
@@ -61,7 +64,9 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
 
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("workouts");
-
+        mCurrentWorkoutDb=FirebaseDatabase.getInstance().getReference().child("currentworkouts");
+        String key=mCurrentWorkoutDb.push().getKey();
+        mCurrentWorkoutDb=mCurrentWorkoutDb.child(key);
 
         setupUI();
         initTime=new Date();
@@ -105,6 +110,7 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
                         mgoogleMap.animateCamera(update);
                     }
                     latLngs.add(ll);
+                    mCurrentWorkoutDb.setValue(new SmallWorkout(0,ll,mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName()));
                     mgoogleMap.clear();
                     MarkerOptions markerStart=new MarkerOptions().title("Start").position(latLngs.get(0));
                     mgoogleMap.addMarker(markerStart);
@@ -226,8 +232,9 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
         SharedPreferences pref = RunningTrackActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
         Workout pushWorkout=new Workout(Workout.RUNTYPE,dist,  time,pref.getInt(SharedPrefData.WEIGHT, 0),latLngs,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
         mDatabase.child(key).setValue(pushWorkout);
-
+        locationManager.removeUpdates(locationListener);
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("workouts").child(key).setValue(key);
+        mCurrentWorkoutDb.setValue(null);
 
     }
 
