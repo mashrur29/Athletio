@@ -6,6 +6,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +32,8 @@ import java.util.Vector;
 
 public class ExercisesActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
-    Vector<Exercise> exercises;
-
+    List<Exercise> exercises;
+    RecyclerView recList;
     TextView tv;
     EditText searchet;
     @Override
@@ -42,7 +45,13 @@ public class ExercisesActivity extends AppCompatActivity {
 
         setupUI();
 
-        exercises=new Vector<Exercise>();
+        recList = (RecyclerView) findViewById(R.id.excercisescardList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
+
+
+        exercises=new ArrayList<Exercise>();
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -65,7 +74,8 @@ public class ExercisesActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tv.setText(exercises.toString());
+        ExcerciseAdapter excerciseAdapter=new ExcerciseAdapter(exercises);
+        recList.setAdapter(excerciseAdapter);
     }
 
     private void setupUI() {
