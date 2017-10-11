@@ -1,12 +1,18 @@
 package com.blogspot.athletio;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +32,7 @@ import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
+    Context context;
     DatabaseReference mDatabase;
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
@@ -48,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
+        context=this;
         setupUI();
 
         mAuth=FirebaseAuth.getInstance();
@@ -107,13 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,MyStatsActivity.class));
             }
         });
-        menu=(Button)findViewById(R.id.mnmenu);
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MainMenuActivity.class));
-            }
-        });
+
 
 
 
@@ -151,5 +154,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         b=false;
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuTrackWorkout:
+                startActivity(new Intent(this, TrackWorkoutMenuActivity.class));
+                return true;
+            case R.id.menuOnlineWorkout:
+                startActivity(new Intent(this, OnlineWorkoutActivity.class));
+                return true;
+            case R.id.menuMyWorkouts:
+                startActivity(new Intent(this, MyWorkoutsActivity.class));
+                return true;
+            case R.id.menuExcersices:
+                startActivity(new Intent(this, ExercisesActivity.class));
+                return true;
+            case R.id.menuSocial:
+                startActivity(new Intent(this, NewsFeedActivity.class));
+                return true;
+            case R.id.menuEvents:
+                startActivity(new Intent(this, EventsActivity.class));
+                return true;
+            case R.id.menuEventReminder:
+                startActivity(new Intent(this, ShowEventRemindersActivity.class));
+                return true;
+            case R.id.menuCreateEvent:
+                startActivity(new Intent(this, CreateEventActivity.class));
+                return true;
+            case R.id.menuSettings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            case R.id.menuSignOut:
+                signOut();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

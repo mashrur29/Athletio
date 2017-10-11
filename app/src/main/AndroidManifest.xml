@@ -22,7 +22,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".SignInActivity">
             <intent-filter>
@@ -48,7 +48,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".MyStatsActivity" />
-        <activity android:name=".MainMenuActivity" />
         <activity android:name=".TrackWorkoutMenuActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ExercisesActivity" />

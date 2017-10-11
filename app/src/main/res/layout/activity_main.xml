@@ -42,10 +42,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/mnstat"
         android:text="stat"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/mnmenu"
-        android:text="Menu"/>
 
 </LinearLayout>

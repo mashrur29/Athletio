@@ -32,6 +32,8 @@ dependencies {
     compile 'com.google.android.gms:play-services:10.2.4'
     compile 'com.google.firebase:firebase-storage:10.0.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile files('libs/CircleImageView-master/gradle/wrapper/gradle-wrapper.jar')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
     testCompile 'junit:junit:4.12'
 }
 

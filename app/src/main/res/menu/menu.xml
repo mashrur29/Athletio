@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuTrackWorkout"
+        android:title="Track Workout" />
+    <item android:id="@+id/menuOnlineWorkout"
+        android:title="Online Workouts" />
+    <item android:id="@+id/menuMyWorkouts"
+        android:title="My Workouts" />
+    <item android:id="@+id/menuExcersices"
+        android:title="Exercises" />
+    <item android:id="@+id/menuSocial"
+        android:title="Social" />
+    <item android:id="@+id/menuEvents"
+        android:title="Events" />
+    <item android:id="@+id/menuEventReminder"
+        android:title="Event Reminders" />
+    <item android:id="@+id/menuCreateEvent"
+        android:title="Create Event" />
+    <item android:id="@+id/menuSettings"
+        android:title="Settings" />
+    <item android:id="@+id/menuSignOut"
+        android:title="Sign Out" />
+</menu>
