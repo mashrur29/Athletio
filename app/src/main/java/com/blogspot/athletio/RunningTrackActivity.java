@@ -177,7 +177,7 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
     }
 
     private void updateUI() {
-        tv.setText("Dist: "+dist+"m"+"\n"+"Time: "+time);
+        tv.setText("Distance: "+Math.round(dist*100)/100+"m"+"\n"+"Time: "+time);
     }
 
     private void setupUI() {

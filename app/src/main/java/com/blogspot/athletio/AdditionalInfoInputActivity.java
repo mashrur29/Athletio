@@ -35,6 +35,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
 
     EditText Height,Weight;
     Button mFirebaseButton;
+    Spinner yearSpinner,monthSpinner,daySpinner,genderSpinner;
     //UI variables - END
 
     @Override
@@ -42,24 +43,19 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additional_info_input);
 
-        Spinner yearSpinner = (Spinner) findViewById(R.id.AditionalInputyearSpinner);
-        Spinner monthSpinner = (Spinner) findViewById(R.id.AditionalInputmonthSpinner);
-        Spinner daySpinner = (Spinner) findViewById(R.id.AditionalInputdaySpinner);
-        Spinner genderSpinner = (Spinner) findViewById(R.id.AditionalInputgenderSpinner);
+        yearSpinner = (Spinner) findViewById(R.id.AditionalInputyearSpinner);
+        monthSpinner = (Spinner) findViewById(R.id.AditionalInputmonthSpinner);
+        daySpinner = (Spinner) findViewById(R.id.AditionalInputdaySpinner);
+        genderSpinner = (Spinner) findViewById(R.id.AditionalInputgenderSpinner);
         Height=(EditText)findViewById(R.id.AditionalInputheight);
         Weight=(EditText)findViewById(R.id.AditionalInputweight);
         addItemOnYearSpinner();
         addItemOnDaySpinner();
         addItemOnMonthSpinner();
         addItemOnGenderSpinner();
-
-
         yearSpinner.setOnItemSelectedListener(this);
-
         monthSpinner.setOnItemSelectedListener(this);
-
         daySpinner.setOnItemSelectedListener(this);
-
         genderSpinner.setOnItemSelectedListener(this);
         mFirebaseButton=(Button)findViewById(R.id.AditionalInputbutton);
 

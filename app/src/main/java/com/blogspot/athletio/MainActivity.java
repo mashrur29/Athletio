@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth.AuthStateListener mAuthListener;
 
     //rem
-    TextView displayName,weight,callorie,stepCount,height;
-    Button stat;
+    TextView callorie,stepCount;
     //end rem
 
 
@@ -55,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         context=this;
         setupUI();
@@ -97,34 +94,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void setupUI(){
-        displayName=(TextView)findViewById(R.id.mndisplayname);
-        weight=(TextView)findViewById(R.id.mnweight);
-        callorie=(TextView)findViewById(R.id.mncallorie);
-        stepCount=(TextView)findViewById(R.id.mnstepcount);
-        height=(TextView)findViewById(R.id.mnheight);
-        stat=(Button)findViewById(R.id.mnstat);
-        stat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MyStatsActivity.class));
-            }
-        });
-
-
+        callorie=(TextView)findViewById(R.id.maincalorie);
+        stepCount=(TextView)findViewById(R.id.mainsteps);
 
 
     }
 
     void updateUI(){
 
-        SharedPreferences pref = MainActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
-        displayName.setText(pref.getString(SharedPrefData.DISPLAYNAME,""));
-        weight.setText("weight: "+pref.getInt(SharedPrefData.WEIGHT,0));
         SharedPreferences calorieMapPref = MainActivity.this.getSharedPreferences(SharedPrefData.CALORIEMAP, MODE_PRIVATE);
-        callorie.setText("callorie:"+calorieMapPref.getInt(new Day().toString(),0));
+        callorie.setText(""+calorieMapPref.getInt(new Day().toString(),0));
         SharedPreferences stepCountMapPref = MainActivity.this.getSharedPreferences(SharedPrefData.STEPCOUNTMAP, MODE_PRIVATE);
-        stepCount.setText("Stepcount: "+stepCountMapPref.getInt(new Day().toString(),0));
-        height.setText("height: "+pref.getInt(SharedPrefData.HEIGHT,0));
+        stepCount.setText(""+stepCountMapPref.getInt(new Day().toString(),0));
 
 
     }
