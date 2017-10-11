@@ -29,6 +29,7 @@ public class Workout {
     Day day;
     int hour;
     int min;
+    int callorie;
 
 
 
@@ -44,6 +45,8 @@ public class Workout {
         for (int i=0;i<map.size();i++){
             this.map.put("index"+Integer.toString(i),map.get(i));
         }
+        callorie=getCallorie();
+
     }
 
     public Workout(int TYPE, double distanceInMeters, long timeInSec,Day day, int weight,int hour,int min) {
@@ -54,6 +57,8 @@ public class Workout {
         this.day=day;
         this.hour=hour;
         this.min=min;
+        callorie=getCallorie();
+
     }
     public Workout(String jsonStr) {
         JsonObjectParser jsonObjectParser=new JsonObjectParser(jsonStr);
@@ -73,6 +78,7 @@ public class Workout {
                 this.map.put(m.getKey().toString(),new LatLng(lat,lng));
             }
         }
+        callorie=getCallorie();
     }
 
     public int getCallorie(){

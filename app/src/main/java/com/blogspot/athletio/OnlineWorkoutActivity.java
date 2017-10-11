@@ -110,7 +110,12 @@ public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapRe
                     if(dataSnapshot!=null){
                         for(DataSnapshot d : dataSnapshot.getChildren()) {
                             SmallWorkout smallWorkout=new SmallWorkout(d.getValue().toString());
-                            MarkerOptions marker=new MarkerOptions().title(smallWorkout.uName).position(smallWorkout.latLng);
+                            String title;
+                            if(smallWorkout.type==0)
+                                title="running";
+                            else
+                                title="cycling";
+                            MarkerOptions marker=new MarkerOptions().title(smallWorkout.uName+" is "+title).position(smallWorkout.latLng);
                             mgoogleMap.addMarker(marker);
 
                         }

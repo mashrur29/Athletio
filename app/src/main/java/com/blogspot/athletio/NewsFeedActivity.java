@@ -3,6 +3,8 @@ package com.blogspot.athletio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,20 +19,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
 import java.util.Vector;
 
 public class NewsFeedActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
 
-    Vector<Post> posts=new Vector<Post>();
+    List<Post> posts=new Vector<Post>();
 
 
     TextView tv;
     Button searchpbt,postbt;
+    RecyclerView recList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
+        recList = (RecyclerView) findViewById(R.id.newsFeedCardList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
+
 
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Posts");
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -53,7 +62,7 @@ public class NewsFeedActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tv.setText(posts.toString());
+        recList.setAdapter(new PostAdapter(posts));
     }
 
     private void setupUI() {
@@ -71,7 +80,7 @@ public class NewsFeedActivity extends AppCompatActivity {
                 startActivity(new Intent(NewsFeedActivity.this,PostPublishActivity.class));
             }
         });
-        tv=(TextView)findViewById(R.id.newsfeedtv);
+
     }
     public boolean onCreateOptionsMenu(Menu menu) {
 

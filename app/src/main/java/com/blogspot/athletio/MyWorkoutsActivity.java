@@ -3,6 +3,8 @@ package com.blogspot.athletio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,14 +20,15 @@ import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
 import java.util.Vector;
 
 public class MyWorkoutsActivity extends AppCompatActivity {
     DatabaseReference mDatabase,mWorkoutkeyDatabase;
     FirebaseAuth mAuth;
     Vector<String> workoutKeys=new Vector<String>();
-    Vector<Workout> workouts=new Vector<Workout>();
-    TextView tv;
+    List<Workout> workouts=new Vector<Workout>();
+    RecyclerView recList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,10 @@ public class MyWorkoutsActivity extends AppCompatActivity {
 
         setupUI();
 
+       recList = (RecyclerView) findViewById(R.id.myWorkoutCardList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
 
         mWorkoutkeyDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -79,21 +86,11 @@ public class MyWorkoutsActivity extends AppCompatActivity {
 
     void setupUI(){
 
-        tv=(TextView)findViewById(R.id.myworkoutstv);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(workouts.get(0)!=null)
-                {
-                    showWorkout(workouts.get(0).key);
-                }
-            }
-        });
     }
 
     void updateUI(){
 
-        tv.setText(workouts.toString());
+        recList.setAdapter(new WorkoutAdapter(workouts));
 
     }
 

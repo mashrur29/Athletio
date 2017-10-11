@@ -6,6 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">#313233</item>
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">#c5c5c5</item>
+        <item name="colorControlHighlight">#c5c5c5</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+        <item name="editTextColor">@color/white</item>
+        <item name="android:editTextStyle">@style/App_EditTextStyle</item>
+    </style>
+    <style name="App_EditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">#FFF</item>
     </style>
 
 </resources>

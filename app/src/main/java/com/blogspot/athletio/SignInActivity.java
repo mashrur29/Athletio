@@ -1,5 +1,6 @@
 package com.blogspot.athletio;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,6 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
         setUpUI();
 
         mAuth=FirebaseAuth.getInstance();

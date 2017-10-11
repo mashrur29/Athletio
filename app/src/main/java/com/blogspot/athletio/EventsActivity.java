@@ -3,6 +3,8 @@ package com.blogspot.athletio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -24,10 +27,11 @@ public class EventsActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     FirebaseAuth mAuth;
 
-    Vector<Event> events=new Vector<Event>();
+    List<Event> events=new Vector<Event>();
 
     //
     TextView tv;
+    RecyclerView recList;
    //
 
     @Override
@@ -39,6 +43,11 @@ public class EventsActivity extends AppCompatActivity {
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Events");
 
         setupUI();
+        recList = (RecyclerView) findViewById(R.id.eventCardList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
+
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -64,7 +73,8 @@ public class EventsActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tv.setText(events.toString());
+
+        recList.setAdapter(new EventAdapter(events));
     }
 
     private void setupUI() {
