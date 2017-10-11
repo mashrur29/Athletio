@@ -14,6 +14,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Online Workouts"
+        android:id="@+id/mainmenuonlineworkoutbt"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="My Workouts"
         android:id="@+id/mainmenumyworkoutsbt"/>
 

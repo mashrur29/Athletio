@@ -71,7 +71,8 @@
         <activity android:name=".NewsFeedActivity" />
         <activity android:name=".ShowProfileActivity" />
         <activity android:name=".PostPublishActivity" />
-        <activity android:name=".ChooseLatFromMapActivity"></activity>
+        <activity android:name=".ChooseLatFromMapActivity" />
+        <activity android:name=".OnlineWorkoutActivity"></activity>
     </application>
 
 </manifest>
