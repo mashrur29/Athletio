@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     //rem
     TextView displayName,weight,callorie,stepCount,height;
-    Button mSignOut,stat,menu;
+    Button stat;
     //end rem
 
 
@@ -102,13 +102,6 @@ public class MainActivity extends AppCompatActivity {
         callorie=(TextView)findViewById(R.id.mncallorie);
         stepCount=(TextView)findViewById(R.id.mnstepcount);
         height=(TextView)findViewById(R.id.mnheight);
-        mSignOut=(Button)findViewById(R.id.mnsignout);
-        mSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
         stat=(Button)findViewById(R.id.mnstat);
         stat.setOnClickListener(new View.OnClickListener() {
             @Override

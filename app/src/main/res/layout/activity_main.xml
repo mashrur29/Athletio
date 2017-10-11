@@ -35,11 +35,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mnsignout"
-        android:text="Sign Out"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/mnstat"
         android:text="stat"/>
 
