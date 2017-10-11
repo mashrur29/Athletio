@@ -6,18 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.blogspot.athletio.TrackWorkoutMenuActivity">
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Running"
-        android:id="@+id/trackworkoutmenurunningbt"/>
+        android:id="@+id/trackworkoutmenurunningbt"
+        android:layout_gravity="center"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cycling"
         android:id="@+id/trackworkoutmenucyclingbt"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Treadmill VR"
         android:id="@+id/trackworkoutmenutreadmillvrbt"/>
