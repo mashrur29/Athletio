@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -58,6 +59,8 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         daySpinner.setOnItemSelectedListener(this);
         genderSpinner.setOnItemSelectedListener(this);
         mFirebaseButton=(Button)findViewById(R.id.AditionalInputbutton);
+        final RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.additionallayout);
+        relativeLayout.setVisibility(View.INVISIBLE);
 
 
         mAuth=FirebaseAuth.getInstance();
@@ -90,7 +93,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
 
                     }
                     else{
-                       // loadForm();
+                        relativeLayout.setVisibility(View.VISIBLE);
                     }
                 }
 
@@ -134,6 +137,12 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
             }
         });
     }
+
+    private void loadForm() {
+
+    }
+
+
     public void addItemOnMonthSpinner()
     {
         List<Integer> year = new ArrayList<Integer>();
