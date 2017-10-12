@@ -3,6 +3,8 @@ package com.blogspot.athletio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
 import java.util.Vector;
 
 public class ShowEventRemindersActivity extends AppCompatActivity {
@@ -24,13 +27,17 @@ public class ShowEventRemindersActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     Vector<String> keys;
 
-    Vector<Event> events;
+    List<Event> events;
 
-    TextView tv;
+    RecyclerView recList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_event_reminder);
+        recList = (RecyclerView) findViewById(R.id.eventReminderCardList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
 
         sharedPrefData=new SharedPrefData(this);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Events");
@@ -61,18 +68,11 @@ public class ShowEventRemindersActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tv.setText(events.toString());
+        recList.setAdapter(new EventAdapter(events));
     }
 
     private void setupUI() {
-        tv=(TextView)findViewById(R.id.showeventremindertv);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(events.get(0)!=null)
-                    showEvent(events.get(0).key);
-            }
-        });
+
     }
     void showEvent(String event){
         Intent intent=new Intent(ShowEventRemindersActivity.this,ShowEventActivity.class);
