@@ -78,7 +78,7 @@ public class Workout {
                 this.map.put(m.getKey().toString(),new LatLng(lat,lng));
             }
         }
-        callorie=getCallorie();
+        callorie=jsonObjectParser.getInt("callorie");
     }
 
     public int getCallorie(){

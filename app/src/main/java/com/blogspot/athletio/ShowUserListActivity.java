@@ -3,6 +3,8 @@ package com.blogspot.athletio;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,14 +14,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
 import java.util.Vector;
 
 public class ShowUserListActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
 
-    Vector<SmallUser> smallUsers;
-
-    TextView tv;
+    List<SmallUser> smallUsers;
+    RecyclerView recList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,10 @@ public class ShowUserListActivity extends AppCompatActivity {
 
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Userlist");
         smallUsers=new Vector<SmallUser>();
+        recList = (RecyclerView) findViewById(R.id.smallusercardList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
 
 
         setupUI();
@@ -51,19 +57,12 @@ public class ShowUserListActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tv.setText(smallUsers.toString());
+        recList.setAdapter(new SmallUserCardAdapter(smallUsers));
     }
 
     private void setupUI() {
-        tv=(TextView)findViewById(R.id.showuserlisttv);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(smallUsers.get(0)!=null){
-                    showProfile(smallUsers.get(0).UID);
-                }
-            }
-        });
+
+        //showProfile(smallUsers.get(0).UID);
     }
 
     private void showProfile(String uid) {

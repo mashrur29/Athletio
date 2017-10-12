@@ -28,7 +28,19 @@ public class ShowEventActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     Event event;
     String key;
-    TextView tv;
+
+
+
+    TextView title;
+    TextView timeDate;
+    TextView description;
+    TextView hostName;
+    TextView type;
+    TextView distance;
+    TextView duration;
+    TextView status;
+    TextView start;
+    TextView stop;
     Button bt;
 
     SharedPrefData sharedPrefdata;
@@ -61,7 +73,41 @@ public class ShowEventActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tv.setText(event.toString());
+        title.setText(" "+event.title);
+        timeDate.setText(event.day.day+"/"+event.day.month+"/"+event.day.year+"  "+String.format("%02d", event.hour)+" : "+String.format("%02d", event.min));
+        description.setText(event.description);
+        hostName.setText(event.creatorName);
+        if(event.type==0)
+            type.setText("Running");
+        else if(event.type==1)
+            type.setText("Cycling");
+        else if(event.type==2)
+            type.setText("Football");
+        else if(event.type==3)
+            type.setText("Cricket");
+        else if(event.type==4)
+            type.setText("Walking");
+        else if(event.type==5)
+            type.setText("Other");
+        duration.setText(event.durationInSec/60+" min "+event.durationInSec%60+"sec");
+        if(event.getStatus()==0){
+            status.setText("Active");
+        }
+        else if(event.getStatus()==1){
+            status.setText("Running");
+        }
+        else if(event.getStatus()==2){
+            status.setText("Cancelled");
+        }
+        else if(event.getStatus()==3){
+            status.setText("Finished");
+        }
+        if(event.type==0||event.type==1||event.type==4){
+            distance.setText(event.distanceInMeters+" m");
+        }
+        else {
+            distance.setText("Not Available");
+        }
         if(sharedPrefdata.hasEventReminderKey(key))
             bt.setText("Cancel Reminder");
         else
@@ -69,7 +115,16 @@ public class ShowEventActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        tv=(TextView)findViewById(R.id.showeventtv);
+        title =  (TextView) findViewById(R.id.showeventTitle);
+        timeDate = (TextView)  findViewById(R.id.showeventTimeDate);
+        description = (TextView)  findViewById(R.id.showeventDescription);
+        hostName = (TextView)findViewById(R.id.showeventHostName);
+        type = (TextView) findViewById(R.id.showeventType);
+        distance= (TextView) findViewById(R.id.showeventDistance);
+        duration= (TextView) findViewById(R.id.showeventDuration);
+        status= (TextView) findViewById(R.id.showeventStatus);
+        start= (TextView) findViewById(R.id.showeventstartloction);
+        stop= (TextView) findViewById(R.id.showeventEndloction);
         bt=(Button)findViewById(R.id.showeventbt);
         bt.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)

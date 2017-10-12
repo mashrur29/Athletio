@@ -1,10 +1,12 @@
 package com.blogspot.athletio;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     EventAdapter(List<Event> list){
         this.list=list;
+        EventViewHolder.list=list;
     }
 
 
@@ -76,6 +79,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     }
 
     public static class EventViewHolder extends RecyclerView.ViewHolder {
+        public static List<Event> list;
         protected TextView title;
         protected TextView timeDate;
         protected TextView description;
@@ -99,6 +103,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             status= (TextView) v.findViewById(R.id.eventcardStatus);
             start= (TextView) v.findViewById(R.id.eventcardstartloction);
             stop= (TextView) v.findViewById(R.id.eventcardEndloction);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int pos = getPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        Intent intent=new Intent(v.getContext(),ShowEventActivity.class);
+                        intent.putExtra("EVENT",list.get(pos).key.toString());
+                        v.getContext().startActivity(intent);
+                    }
+                }
+            });
         }
     }
 }

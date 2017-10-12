@@ -94,7 +94,7 @@ public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMap
             Address obj = addresses.get(0);
             String add = obj.getAddressLine(0);
             return add;
-        } catch (IOException e) {
+        } catch (Exception e) {
 
         }
         return null;

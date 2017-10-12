@@ -54,7 +54,7 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        bt=(Button)findViewById(R.id.createeventbt);
+        bt=(Button)findViewById(R.id.create_event_submit_bt);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,14 +63,14 @@ public class CreateEventActivity extends AppCompatActivity {
 
             }
         });
-        startbt=(Button)findViewById(R.id.createeventchoosestartlatbt);
+        startbt=(Button)findViewById(R.id.create_event_choose_start_latbt);
         startbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 chooseStartLat();
             }
         });
-        stopbt=(Button)findViewById(R.id.createeventchoosestoplatbt);
+        stopbt=(Button)findViewById(R.id.create_event_chooses_stop_latbt);
         stopbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

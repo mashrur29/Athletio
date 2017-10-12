@@ -6,20 +6,171 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.blogspot.athletio.CreateEventActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Type : "
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"/>
+            <Spinner
+                android:id="@+id/create_event_title_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp">
+            </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title: "
+                android:textSize="18dp"/>
+            <EditText
+                android:layout_width="330sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_event_title_edit_text"
+                android:hint="Write Event Title.."
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Time : "
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"/>
+            <Spinner
+                android:id="@+id/create_event_start_hours_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp">
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hours"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp"/>
+            <Spinner
+                android:id="@+id/create_event_start_minutes_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp">
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="min"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Duration : "/>
+            <EditText
+                android:layout_width="290sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_event_duration_edit_text"
+                android:hint="Write Duration (minutes).."
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Distance :"/>
+            <EditText
+                android:layout_width="290sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_event_distance_edit_text"
+                android:hint="Write Distance ( in meter unit).."
+                android:textSize="15sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details :"
+                android:textSize="18dp"/>
+            <EditText
+                android:layout_width="300sp"
+                android:layout_height="100sp"
+                android:hint="Write about the event.."
+                android:id="@+id/create_event_description_edit_text"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <Button
+            android:id="@+id/create_event_choose_start_latbt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Choose Start Point" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose End Point"
+            android:id="@+id/create_event_chooses_stop_latbt"
+            android:layout_weight="1"/>
+    </LinearLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="click"
-        android:id="@+id/createeventbt"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/createeventchoosestartlatbt"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="stop"
-        android:id="@+id/createeventchoosestoplatbt"/>
+        android:text="Submit"
+        android:layout_gravity="center"
+        android:id="@+id/create_event_submit_bt"/>
 
 </LinearLayout>
