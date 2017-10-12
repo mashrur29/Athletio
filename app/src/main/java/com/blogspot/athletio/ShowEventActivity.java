@@ -57,10 +57,12 @@ public class ShowEventActivity extends AppCompatActivity {
         mDatabase.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                event=new Event(dataSnapshot.getValue().toString());
-                event.key=key;
-                setupUI();
-                updateUI();
+                if(dataSnapshot!=null){
+                    event=new Event(dataSnapshot.getValue().toString());
+                    event.key=key;
+                    setupUI();
+                    updateUI();
+                }
             }
 
             @Override

@@ -62,7 +62,6 @@ public class ShowUserListActivity extends AppCompatActivity {
 
     private void setupUI() {
 
-        //showProfile(smallUsers.get(0).UID);
     }
 
     private void showProfile(String uid) {

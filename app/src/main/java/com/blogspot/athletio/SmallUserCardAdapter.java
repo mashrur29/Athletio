@@ -1,6 +1,7 @@
 package com.blogspot.athletio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ public class SmallUserCardAdapter  extends RecyclerView.Adapter<SmallUserCardAda
 
     public SmallUserCardAdapter(List<SmallUser> List) {
         this.List = List;
+        SmallUserHolder.list=List;
     }
 
     @Override
@@ -48,12 +50,24 @@ public class SmallUserCardAdapter  extends RecyclerView.Adapter<SmallUserCardAda
 
 
     public static class SmallUserHolder extends RecyclerView.ViewHolder {
+        static List<SmallUser> list;
         protected ImageView imageView;
         protected  TextView textView;
         public SmallUserHolder(View v) {
             super(v);
             textView =  (TextView) v.findViewById(R.id.showuserlist_cardtv);
             imageView=(ImageView) v.findViewById(R.id.showuserlist_cardiv);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int pos = getPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        Intent intent=new Intent(v.getContext(),ShowProfileActivity.class);
+                        intent.putExtra("UID",list.get(pos).UID.toString());
+                        v.getContext().startActivity(intent);
+                    }
+                }
+            });
         }
     }
 }
