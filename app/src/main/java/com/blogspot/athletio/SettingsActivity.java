@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
 
-    Button deletealldatabt,submit;
+    Button submit;
     EditText birthDate,birthMonth,birthYear,gender,height;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,31 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        deletealldatabt=(Button)findViewById(R.id.settingsdeletealldatabt);
-        deletealldatabt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context=SettingsActivity.this;
-                SharedPreferences weightMapPref = context.getSharedPreferences(SharedPrefData.WEIGHTMAP, MODE_PRIVATE);
-                SharedPreferences.Editor weightMapEditor = weightMapPref.edit();
-                weightMapEditor.clear();
-                weightMapEditor.commit();
 
-
-                SharedPreferences stepCountMapPref = context.getSharedPreferences(SharedPrefData.STEPCOUNTMAP, MODE_PRIVATE);
-                SharedPreferences.Editor stepCountMapeditor =  stepCountMapPref.edit();
-                stepCountMapeditor.clear();
-                stepCountMapeditor.commit();
-
-                SharedPreferences calorieMapPref = context.getSharedPreferences(SharedPrefData.CALORIEMAP, MODE_PRIVATE);
-                SharedPreferences.Editor calorieMapeditor =  calorieMapPref.edit();
-                calorieMapeditor.clear();
-                calorieMapeditor.commit();
-
-
-
-            }
-        });
         birthDate=(EditText)findViewById(R.id.settingsbirthdate);
         birthMonth=(EditText)findViewById(R.id.settingsbirthmonth);
         birthYear=(EditText)findViewById(R.id.settingsbirthyear);

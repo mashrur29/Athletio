@@ -6,30 +6,51 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.blogspot.athletio.SettingsActivity">
-    <Button
-        android:layout_width="wrap_content"
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete All Data from Account"
-        android:id="@+id/settingsdeletealldatabt"/>
-
-
-
+        android:text="Birthdate:"
+        android:textSize="15dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/settingsbirthdate"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Birthmonth:"
+        android:textSize="15dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/settingsbirthmonth"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Birthyear:"
+        android:textSize="15dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/settingsbirthyear"/>
-    <EditText
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/settingsgender"/>
+        android:text="Height:"
+        android:textSize="15dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
