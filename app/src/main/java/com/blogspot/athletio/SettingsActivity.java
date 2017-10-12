@@ -23,7 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     Button submit;
-    EditText birthDate,birthMonth,birthYear,gender,height;
+    EditText birthDate,birthMonth,birthYear,height;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,17 +36,49 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-
+        User user=new SharedPrefData(SettingsActivity.this).getUser();
         birthDate=(EditText)findViewById(R.id.settingsbirthdate);
+        birthDate.setText(user.userInfo.birthDate+"");
         birthMonth=(EditText)findViewById(R.id.settingsbirthmonth);
+        birthMonth.setText(user.userInfo.birthMonth+"");
         birthYear=(EditText)findViewById(R.id.settingsbirthyear);
-        gender=(EditText)findViewById(R.id.settingsgender);
+        birthYear.setText(user.userInfo.birthYear+"");
         height=(EditText)findViewById(R.id.settingsheight);
+        height.setText(user.userData.height+"");
         submit=(Button)findViewById(R.id.settingssubmitbutton);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserInfo userInfo=new UserInfo(mAuth.getCurrentUser().getDisplayName(),Integer.parseInt(birthDate.getText().toString()),Integer.parseInt(birthMonth.getText().toString()),Integer.parseInt(birthYear.getText().toString()),gender.getText().toString(),mAuth.getCurrentUser().getEmail());
+                try{
+                    Integer.parseInt(birthDate.getText().toString());
+                }
+                catch (Exception e){
+                    Toast.makeText(SettingsActivity.this,"Put Bithdate in correct form",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                try{
+                    Integer.parseInt(birthMonth.getText().toString());
+                }
+                catch (Exception e){
+                    Toast.makeText(SettingsActivity.this,"Put Bithmonth in correct form",Toast.LENGTH_SHORT).show();
+                    return;
+
+                }
+                try{
+                    Integer.parseInt(birthYear.getText().toString());
+                }
+                catch (Exception e){
+                    Toast.makeText(SettingsActivity.this,"Put Birthyear in correct form",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                try{
+                    Integer.parseInt(height.getText().toString());
+                }
+                catch (Exception e){
+                    Toast.makeText(SettingsActivity.this,"Put Height in correct form",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                UserInfo userInfo=new UserInfo(mAuth.getCurrentUser().getDisplayName(),Integer.parseInt(birthDate.getText().toString()),Integer.parseInt(birthMonth.getText().toString()),Integer.parseInt(birthYear.getText().toString()),new SharedPrefData(SettingsActivity.this).getUser().userInfo.gender,mAuth.getCurrentUser().getEmail());
 
                 SharedPreferences pref = SettingsActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
@@ -54,11 +86,11 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putInt(SharedPrefData.BIRTHDATE,Integer.parseInt(birthDate.getText().toString()));
                 editor.putInt(SharedPrefData.BIRTHMONTH,Integer.parseInt(birthMonth.getText().toString()));
                 editor.putInt(SharedPrefData.BIRTHYEAR,Integer.parseInt(birthYear.getText().toString()));
-                editor.putString(SharedPrefData.GENDER,gender.getText().toString());
                 editor.putString(SharedPrefData.EMAIL,mAuth.getCurrentUser().getEmail());
                 editor.putInt(SharedPrefData.HEIGHT,Integer.parseInt(height.getText().toString()));
                 editor.commit();
                 Toast.makeText(SettingsActivity.this,"Updated Successfully",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(SettingsActivity.this,MainActivity.class));
             }
         });
     }

@@ -32,7 +32,6 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, int i) {
         Workout workout=List.get(i);
-        Log.d("wef","efw");
         holder.time.setText(" "+workout.day.day+"/"+workout.day.month+"/"+workout.day.year+"  "+String.format("%02d", workout.hour)+" : "+String.format("%02d", workout.min));
         if(workout.TYPE==0)
         holder.type.setText("Running");
