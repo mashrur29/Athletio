@@ -21,7 +21,7 @@
                 android:textSize="18dp"
                 android:layout_marginTop="10dp"/>
             <Spinner
-                android:id="@+id/create_event_layout_title_spinner"
+                android:id="@+id/create_event_layout_type_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/create_event_title_edit_text"
                 android:hint="Write Event Title.."
+                android:textColor="@color/white"
                 android:textSize="15sp"/>
         </LinearLayout>
 
@@ -69,7 +70,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hours"
+                android:text="hour"
                 android:textSize="15dp"
                 android:layout_marginTop="10dp"/>
             <Spinner
@@ -83,10 +84,72 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="min"
+                android:text="minute"
                 android:textSize="15dp"
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text=" Year:"
+                    android:textSize="15dp"/>
+                <Spinner
+                    android:id="@+id/create_event_layout_year_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp">
+                </Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Month:"
+                    android:textSize="15dp"/>
+                <Spinner
+                    android:id="@+id/create_event_layout_month_spinner"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="10dp">
+                </Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Day:"/>
+                <Spinner
+                    android:id="@+id/create_event_layout_day_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="10dp">
+                </Spinner>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,8 +164,9 @@
             <EditText
                 android:layout_width="290sp"
                 android:layout_height="wrap_content"
-                android:id="@+id/create_event_duration_edit_text"
-                android:hint="Write Duration (minutes).."
+                android:id="@+id/create_event_layout_duration_edit_text"
+                android:textColor="@color/white"
+                android:hint="Duration (minutes)"
                 android:textSize="15sp"
                 />
         </LinearLayout>
@@ -120,8 +184,9 @@
             <EditText
                 android:layout_width="290sp"
                 android:layout_height="wrap_content"
-                android:id="@+id/create_event_distance_edit_text"
-                android:hint="Write Distance ( in meter unit).."
+                android:id="@+id/create_event_layout_distance_edit_text"
+                android:textColor="@color/white"
+                android:hint="Distance (meter)"
                 android:textSize="15sp"/>
         </LinearLayout>
         <LinearLayout
@@ -133,13 +198,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Details :"
+                android:text="Description :"
                 android:textSize="18dp"/>
             <EditText
                 android:layout_width="300sp"
                 android:layout_height="100sp"
                 android:hint="Write about the event.."
-                android:id="@+id/create_event_description_edit_text"
+                android:textColor="@color/white"
+                android:id="@+id/create_event_layout_description_edit_text"
                 android:textSize="15sp"/>
         </LinearLayout>
 
@@ -153,7 +219,7 @@
         android:layout_marginRight="5dp">
 
         <Button
-            android:id="@+id/create_event_choose_start_latbt"
+            android:id="@+id/create_event_layout_choose_start_latbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -163,14 +229,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose End Point"
-            android:id="@+id/create_event_chooses_stop_latbt"
+            android:id="@+id/create_event_layout_chooses_stop_latbt"
             android:layout_weight="1"/>
     </LinearLayout>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_gravity="center"
-        android:id="@+id/create_event_submit_bt"/>
+        android:id="@+id/create_event_layout_submit_bt"/>
 
 </LinearLayout>

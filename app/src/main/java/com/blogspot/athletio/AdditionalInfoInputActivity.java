@@ -50,9 +50,9 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additional_info_input);
 
-        yearSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_year_spinner);
-        monthSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_month_spinner);
-        daySpinner = (Spinner) findViewById(R.id.additional_info_input_layout_day_spinner);
+        yearSpinner = (Spinner) findViewById(R.id.create_event_layout_year_spinner);
+        monthSpinner = (Spinner) findViewById(R.id.create_event_layout_month_spinner);
+        daySpinner = (Spinner) findViewById(R.id.create_event_layout_day_spinner);
         genderSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_gender_spinner);
         height=(EditText)findViewById(R.id.additional_info_input_layout_height_edittext);
         weight=(EditText)findViewById(R.id.additional_info_input_layout_weight_edittext);
@@ -156,7 +156,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, year);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner yearSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_month_spinner);
+        Spinner yearSpinner = (Spinner) findViewById(R.id.create_event_layout_month_spinner);
         yearSpinner.setAdapter(dataAdapter);
         return;
     }
@@ -169,7 +169,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, day);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner daySpinner = (Spinner) findViewById(R.id.additional_info_input_layout_day_spinner);
+        Spinner daySpinner = (Spinner) findViewById(R.id.create_event_layout_day_spinner);
         daySpinner.setAdapter(dataAdapter);
         return;
     }
@@ -182,7 +182,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, month);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner monthSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_year_spinner);
+        Spinner monthSpinner = (Spinner) findViewById(R.id.create_event_layout_year_spinner);
         monthSpinner.setAdapter(dataAdapter);
         return;
     }
@@ -202,15 +202,15 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
 
         String item = parent.getItemAtPosition(position).toString();
         Spinner spinner = (Spinner) parent;
-        if(spinner.getId() == R.id.additional_info_input_layout_day_spinner)
+        if(spinner.getId() == R.id.create_event_layout_day_spinner)
         {
             day=Integer.parseInt(item);
         }
-        else if(spinner.getId() == R.id.additional_info_input_layout_month_spinner)
+        else if(spinner.getId() == R.id.create_event_layout_month_spinner)
         {
             month =Integer.parseInt(item);
         }
-        else if(spinner.getId() == R.id.additional_info_input_layout_year_spinner)
+        else if(spinner.getId() == R.id.create_event_layout_year_spinner)
         {
             year =Integer.parseInt(item);
         }

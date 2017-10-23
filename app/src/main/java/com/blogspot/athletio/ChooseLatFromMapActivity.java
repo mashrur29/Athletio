@@ -105,7 +105,6 @@ public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMap
                 mgoogleMap.clear();
                 MarkerOptions markerStart=new MarkerOptions().position(point);
                 mgoogleMap.addMarker(markerStart);
-                Log.d("add",getAddress(point.latitude,point.longitude));
             }
         });
     }

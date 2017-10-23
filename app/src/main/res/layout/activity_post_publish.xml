@@ -22,7 +22,7 @@
             android:id="@+id/post_publish_layout_submit_button"/></LinearLayout>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200sp"
         android:textColor="@color/white"
         android:inputType="textMultiLine"
         android:hint="Post..."
