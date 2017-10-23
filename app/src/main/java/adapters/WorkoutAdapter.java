@@ -48,7 +48,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
     public WorkoutViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
-                inflate(R.layout.workout_card, viewGroup, false);
+                inflate(R.layout.card_workout, viewGroup, false);
         return new WorkoutViewHolder(itemView);
     }
 

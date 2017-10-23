@@ -47,7 +47,7 @@ public class SmallUserCardAdapter  extends RecyclerView.Adapter<SmallUserCardAda
     public SmallUserHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
-                inflate(R.layout.showuserlist_card, viewGroup, false);
+                inflate(R.layout.card_showuserlist, viewGroup, false);
         context=viewGroup.getContext();
         return new SmallUserHolder(itemView);
     }
