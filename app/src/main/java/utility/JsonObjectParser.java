@@ -64,10 +64,5 @@ public class JsonObjectParser {
         return ret;
     }
 
-    public void printJsonObject(){
-        for(Map.Entry m:map.entrySet()){
-            String log=m.getKey()+"=!="+m.getValue();
-            Log.d("printJsonobject",log);
-        }
-    }
+
 }

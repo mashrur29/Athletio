@@ -17,19 +17,21 @@ import storage.SharedPrefData;
  */
 
 public class FirebaseUploadService extends Service {
+
+    public static final String TAG = "FirebaseUploadService";
+    public static final int UPLOAD_DELAY = 10000;
+
     DatabaseReference mDatabase;
     FirebaseAuth mAuth;
     SharedPrefData sharedPrefData;
-    public static final String TAG = "FirebaseUploadService";
-    public static final int UPLOAD_DELAY = 10000;
     UploaderThread uploaderThread;
 
     class UploaderThread extends Thread {
-        boolean b = true;
+        boolean threadRunning = true;
 
         @Override
         public void run() {
-            while (b) {
+            while (threadRunning) {
 
 
                 synchronized (mDatabase) {
@@ -66,7 +68,7 @@ public class FirebaseUploadService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        uploaderThread.b = false;
+        uploaderThread.threadRunning = false;
         Log.d(TAG, "destroyed");
     }
 

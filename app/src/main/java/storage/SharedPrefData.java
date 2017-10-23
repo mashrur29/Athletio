@@ -19,7 +19,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SharedPrefData {
     public Context context;
-    public static boolean saved=false;
+
     public static final String SAVED="saved";
     public static final String USERINFO="Userinfo";
     public static final String DISPLAYNAME="displayName";
@@ -182,10 +182,6 @@ public class SharedPrefData {
         for(Map.Entry<String,?> entry : keys.entrySet()){
             calorieMap.put(entry.getKey().toString(),callorieMapPref.getInt(entry.getKey().toString(),0));
         }
-
-
-
-
         ret.userData.setWeightMap(weightMap);
         ret.userData.setStepCountMap(stepCountMap);
         ret.userData.setCalorieMap(calorieMap);

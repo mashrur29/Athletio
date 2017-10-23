@@ -20,7 +20,7 @@ public class ExcerciseAdapter extends RecyclerView.Adapter<ExcerciseAdapter.Exer
 
     public  List<Exercise> list;
 
-    public ExcerciseAdapter(List<Exercise> List) {
+    public ExcerciseAdapter(List<Exercise> list) {
         this.list = list;
     }
 
