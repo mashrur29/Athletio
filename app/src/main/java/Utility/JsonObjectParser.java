@@ -1,4 +1,4 @@
-package com.blogspot.athletio;
+package Utility;
 
 import android.util.Log;
 

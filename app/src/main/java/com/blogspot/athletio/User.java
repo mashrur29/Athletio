@@ -1,6 +1,6 @@
 package com.blogspot.athletio;
 
-import org.json.JSONException;
+import Utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/24/17.

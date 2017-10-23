@@ -1,14 +1,12 @@
 package com.blogspot.athletio;
 
-import android.util.Log;
-
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.TreeMap;
 import java.util.Vector;
+
+import Utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/27/17.

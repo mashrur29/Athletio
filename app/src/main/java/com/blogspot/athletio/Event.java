@@ -1,12 +1,10 @@
 package com.blogspot.athletio;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.android.gms.identity.intents.AddressConstants;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
+
+import Utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 9/26/17.

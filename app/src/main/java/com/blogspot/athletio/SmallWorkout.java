@@ -2,6 +2,8 @@ package com.blogspot.athletio;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import Utility.JsonObjectParser;
+
 /**
  * Created by tanvir on 10/10/17.
  */
