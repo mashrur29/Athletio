@@ -22,22 +22,22 @@ import general.SmallUser;
  */
 
 public class SmallUserCardAdapter  extends RecyclerView.Adapter<SmallUserCardAdapter.SmallUserHolder>{
-    private List<SmallUser> List;
+    private List<SmallUser> list;
     public Context context;
 
-    public SmallUserCardAdapter(List<SmallUser> List) {
-        this.List = List;
-        SmallUserHolder.list=List;
+    public SmallUserCardAdapter(List<SmallUser> list) {
+        this.list = list;
+        SmallUserHolder.list=list;
     }
 
     @Override
     public int getItemCount() {
-        return List.size();
+        return list.size();
     }
 
     @Override
     public void onBindViewHolder(SmallUserHolder holder, int i) {
-        SmallUser smallUser = List.get(i);
+        SmallUser smallUser = list.get(i);
         Picasso.with(context).load(smallUser.photo).into(holder.imageView);
         holder.textView.setText(smallUser.name);
 

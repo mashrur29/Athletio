@@ -18,15 +18,15 @@ import general.Exercise;
 
 public class ExcerciseAdapter extends RecyclerView.Adapter<ExcerciseAdapter.ExerciseViewHolder> {
 
-    public  List<Exercise> List;
+    public  List<Exercise> list;
 
     public ExcerciseAdapter(List<Exercise> List) {
-        this.List = List;
+        this.list = list;
     }
 
     @Override
     public int getItemCount() {
-        return List.size();
+        return list.size();
     }
 
 
@@ -41,7 +41,7 @@ public class ExcerciseAdapter extends RecyclerView.Adapter<ExcerciseAdapter.Exer
 
     @Override
     public void onBindViewHolder(ExerciseViewHolder holder, int position) {
-        Exercise exercise=List.get(position);
+        Exercise exercise=list.get(position);
         holder.title.setText(exercise.title);
         holder.description.setText(exercise.description);
         holder.category.setText("Category: "+ exercise.category);

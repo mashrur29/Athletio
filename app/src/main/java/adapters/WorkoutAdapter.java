@@ -18,20 +18,20 @@ import general.Workout;
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>{
 
-    public  List<Workout> List;
+    public  List<Workout> list;
 
     public WorkoutAdapter(List<Workout> List) {
-        this.List=List;
+        this.list=list;
     }
 
     @Override
     public int getItemCount() {
-        return List.size();
+        return list.size();
     }
 
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, int i) {
-        Workout workout=List.get(i);
+        Workout workout=list.get(i);
         holder.time.setText(" "+workout.day.day+"/"+workout.day.month+"/"+workout.day.year+"  "+String.format("%02d", workout.hour)+" : "+String.format("%02d", workout.min));
         if(workout.TYPE==0)
         holder.type.setText("Running");

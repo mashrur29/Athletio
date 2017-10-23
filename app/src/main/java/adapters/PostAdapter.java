@@ -21,21 +21,21 @@ import general.Post;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder>{
 
-    private List<Post> List;
+    private List<Post> list;
     public Context context;
 
     public PostAdapter(List<Post> List) {
-        this.List=List;
+        this.list=List;
     }
 
     @Override
     public int getItemCount() {
-        return List.size();
+        return list.size();
     }
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, int i) {
-        Post post=List.get(i);
+        Post post=list.get(i);
         holder.time.setText(" "+post.day.day+"/"+post.day.month+"/"+post.day.year+"  "+String.format("%02d", post.hour)+" : "+String.format("%02d", post.min));
         holder.uName.setText(" "+post.uName);
         holder.body.setText(" "+post.body);

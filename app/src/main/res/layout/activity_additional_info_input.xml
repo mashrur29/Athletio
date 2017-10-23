@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/additionallayout"
+    android:id="@+id/additional_info_input_layout"
     tools:context="com.blogspot.athletio.AdditionalInfoInputActivity">
 
 
@@ -35,7 +35,7 @@
                 android:text=" Year:"
                 android:textSize="15dp"/>
             <Spinner
-                android:id="@+id/AditionalInputyearSpinner"
+                android:id="@+id/additional_info_input_layout_year_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10dp">
@@ -54,7 +54,7 @@
                 android:text=" Month:"
                 android:textSize="15dp"/>
             <Spinner
-                android:id="@+id/AditionalInputmonthSpinner"
+                android:id="@+id/additional_info_input_layout_month_spinner"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:textAlignment="center"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text=" Day:"/>
             <Spinner
-                android:id="@+id/AditionalInputdaySpinner"
+                android:id="@+id/additional_info_input_layout_day_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -92,10 +92,9 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text=" Gender:"
-               android:id="@+id/AditionalInputgender"
                />
            <Spinner
-               android:id="@+id/AditionalInputgenderSpinner"
+               android:id="@+id/additional_info_input_layout_gender_spinner"
                android:layout_width="100dp"
                android:layout_height="wrap_content"
                android:textAlignment="center"
@@ -111,7 +110,7 @@
             android:textAlignment="center"
             android:text="Height (cm)"/>
         <EditText
-            android:id="@+id/AditionalInputheight"
+            android:id="@+id/additional_info_input_layout_height_edittext"
             android:layout_width="match_parent"
             android:textSize="15dp"
             android:textColor="@color/white"
@@ -128,7 +127,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/AditionalInputweight"
+            android:id="@+id/additional_info_input_layout_weight_edittext"
             android:textSize="15dp"
             android:textColor="@color/white"
             android:textAlignment="center" />
@@ -136,7 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp" />
         <Button
-            android:id="@+id/AditionalInputbutton"
+            android:id="@+id/additional_info_input_layout_submit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"

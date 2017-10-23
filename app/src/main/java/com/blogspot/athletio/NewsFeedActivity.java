@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -68,6 +69,7 @@ public class NewsFeedActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
+        Collections.reverse(posts);
         recList.setAdapter(new PostAdapter(posts));
     }
 

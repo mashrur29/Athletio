@@ -19,18 +19,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-
-import static java.security.AccessController.getContext;
 
 public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap mgoogleMap;
     LatLng latLng=new LatLng(0.0,0.0);
 
-    Button bt;
+    Button submitButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +43,8 @@ public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMap
     }
 
     private void setupUI() {
-        bt=(Button)findViewById(R.id.chooselatfrommapbt);
-        bt.setOnClickListener(new View.OnClickListener() {
+        submitButton =(Button)findViewById(R.id.choose_lat_from_map_submit_button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -67,7 +64,7 @@ public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMap
 
 
     private void initMap() {
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.chooselatfrommapmap);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.choose_lat_from_map_map);
         mapFragment.getMapAsync(this);
 
     }

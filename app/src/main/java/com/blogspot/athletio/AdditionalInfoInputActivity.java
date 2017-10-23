@@ -35,26 +35,27 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
     User user;
     SharedPrefData sharedPrefData;
 
-    //UI variables - START
-    int Year,Month,Day;
-    String Gender;
 
-    EditText Height,Weight;
+
+    int year, month,day;
+    String gender;
+
+    EditText height,weight;
     Button mFirebaseButton;
     Spinner yearSpinner,monthSpinner,daySpinner,genderSpinner;
-    //UI variables - END
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additional_info_input);
 
-        yearSpinner = (Spinner) findViewById(R.id.AditionalInputyearSpinner);
-        monthSpinner = (Spinner) findViewById(R.id.AditionalInputmonthSpinner);
-        daySpinner = (Spinner) findViewById(R.id.AditionalInputdaySpinner);
-        genderSpinner = (Spinner) findViewById(R.id.AditionalInputgenderSpinner);
-        Height=(EditText)findViewById(R.id.AditionalInputheight);
-        Weight=(EditText)findViewById(R.id.AditionalInputweight);
+        yearSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_year_spinner);
+        monthSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_month_spinner);
+        daySpinner = (Spinner) findViewById(R.id.additional_info_input_layout_day_spinner);
+        genderSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_gender_spinner);
+        height=(EditText)findViewById(R.id.additional_info_input_layout_height_edittext);
+        weight=(EditText)findViewById(R.id.additional_info_input_layout_weight_edittext);
         addItemOnYearSpinner();
         addItemOnDaySpinner();
         addItemOnMonthSpinner();
@@ -63,8 +64,10 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         monthSpinner.setOnItemSelectedListener(this);
         daySpinner.setOnItemSelectedListener(this);
         genderSpinner.setOnItemSelectedListener(this);
-        mFirebaseButton=(Button)findViewById(R.id.AditionalInputbutton);
-        final RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.additionallayout);
+        mFirebaseButton=(Button)findViewById(R.id.additional_info_input_layout_submit_button);
+
+
+        final RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.additional_info_input_layout);
         relativeLayout.setVisibility(View.INVISIBLE);
 
 
@@ -115,19 +118,19 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
             public void onClick(View view) {
 
                 try{
-                    Integer.parseInt(Height.getText().toString());
+                    Integer.parseInt(height.getText().toString());
                 }catch (Exception e){
                     Toast.makeText(AdditionalInfoInputActivity.this,"Height is Wrong",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try{
-                    Integer.parseInt(Weight.getText().toString());
+                    Integer.parseInt(weight.getText().toString());
                 }catch (Exception e){
                     Toast.makeText(AdditionalInfoInputActivity.this,"Weight is Wrong",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                user=new User(mAuth.getCurrentUser().getDisplayName(),Day,Month,Year,Gender,mAuth.getCurrentUser().getEmail(),Integer.parseInt(Height.getText().toString()),Integer.parseInt(Weight.getText().toString()));
+                user=new User(mAuth.getCurrentUser().getDisplayName(),day, month, year, gender,mAuth.getCurrentUser().getEmail(),Integer.parseInt(height.getText().toString()),Integer.parseInt(weight.getText().toString()));
                 mDatabase.setValue(user);
                 FirebaseDatabase.getInstance().getReference().child("Userlist").child(mAuth.getCurrentUser().getUid()).setValue(new SmallUser(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),mAuth.getCurrentUser().getPhotoUrl().toString()));
 
@@ -143,10 +146,6 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         });
     }
 
-    private void loadForm() {
-
-    }
-
 
     public void addItemOnMonthSpinner()
     {
@@ -157,7 +156,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, year);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner yearSpinner = (Spinner) findViewById(R.id.AditionalInputmonthSpinner);
+        Spinner yearSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_month_spinner);
         yearSpinner.setAdapter(dataAdapter);
         return;
     }
@@ -170,7 +169,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, day);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner daySpinner = (Spinner) findViewById(R.id.AditionalInputdaySpinner);
+        Spinner daySpinner = (Spinner) findViewById(R.id.additional_info_input_layout_day_spinner);
         daySpinner.setAdapter(dataAdapter);
         return;
     }
@@ -183,7 +182,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, month);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner monthSpinner = (Spinner) findViewById(R.id.AditionalInputyearSpinner);
+        Spinner monthSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_year_spinner);
         monthSpinner.setAdapter(dataAdapter);
         return;
     }
@@ -194,7 +193,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         gender.add("FeMale");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, gender);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner genderSpinner = (Spinner) findViewById(R.id.AditionalInputgenderSpinner);
+        Spinner genderSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_gender_spinner);
         genderSpinner.setAdapter(dataAdapter);
         return;
     }
@@ -203,21 +202,21 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
 
         String item = parent.getItemAtPosition(position).toString();
         Spinner spinner = (Spinner) parent;
-        if(spinner.getId() == R.id.AditionalInputdaySpinner)
+        if(spinner.getId() == R.id.additional_info_input_layout_day_spinner)
         {
-            Day=Integer.parseInt(item);
+            day=Integer.parseInt(item);
         }
-        else if(spinner.getId() == R.id.AditionalInputmonthSpinner)
+        else if(spinner.getId() == R.id.additional_info_input_layout_month_spinner)
         {
-            Month=Integer.parseInt(item);
+            month =Integer.parseInt(item);
         }
-        else if(spinner.getId() == R.id.AditionalInputyearSpinner)
+        else if(spinner.getId() == R.id.additional_info_input_layout_year_spinner)
         {
-            Year=Integer.parseInt(item);
+            year =Integer.parseInt(item);
         }
-        else if(spinner.getId() == R.id.AditionalInputgenderSpinner)
+        else if(spinner.getId() == R.id.additional_info_input_layout_gender_spinner)
         {
-            Gender=item;
+            gender =item;
         }
     }
 
