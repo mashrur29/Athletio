@@ -1,18 +1,18 @@
-package com.blogspot.athletio;
+package general;
 
 
 import java.util.Calendar;
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/25/17.
  */
 
 public class Day {
-    int day;
-    int month;
-    int year;
+    public int day;
+    public int month;
+    public int year;
 
     public Day(int day, int month, int year) {
         this.day = day;

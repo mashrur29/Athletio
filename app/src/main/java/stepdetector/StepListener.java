@@ -1,4 +1,4 @@
-package com.blogspot.athletio;
+package stepdetector;
 
 /**
  * Created by tanvir on 8/28/17.

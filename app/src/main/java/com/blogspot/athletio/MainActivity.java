@@ -6,29 +6,19 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.*;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.Date;
-import java.util.Map;
+import general.Day;
+import services.FirebaseUploadService;
+import stepdetector.StepDetector;
+import storage.SharedPrefData;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -114,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
         b=false;
         SharedPrefData sharedPrefData=new SharedPrefData(MainActivity.this);
         sharedPrefData.clear();
-        Intent intent=new Intent(MainActivity.this,FirebaseUploadService.class);
+        Intent intent=new Intent(MainActivity.this, FirebaseUploadService.class);
         stopService(intent);
 
-        Intent intent2=new Intent(MainActivity.this,StepDetector.class);
+        Intent intent2=new Intent(MainActivity.this, StepDetector.class);
         stopService(intent2);
         mAuth.signOut();
     }

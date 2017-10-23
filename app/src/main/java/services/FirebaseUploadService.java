@@ -1,16 +1,16 @@
-package com.blogspot.athletio;
+package services;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import storage.SharedPrefData;
 
 /**
  * Created by tanvir on 8/26/17.

@@ -1,7 +1,6 @@
 package com.blogspot.athletio;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +22,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import general.SmallUser;
+import general.User;
+import services.FirebaseUploadService;
+import services.StepDetectorService;
+import storage.SharedPrefData;
 
 public class AdditionalInfoInputActivity extends AppCompatActivity  implements AdapterView.OnItemSelectedListener{
     DatabaseReference mDatabase;
@@ -85,8 +90,8 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
                         sharedPrefData.saveUser(user);
 
 
-                        startService(new Intent(AdditionalInfoInputActivity.this,FirebaseUploadService.class));
-                        startService(new Intent(AdditionalInfoInputActivity.this,StepDetectorService.class));
+                        startService(new Intent(AdditionalInfoInputActivity.this, FirebaseUploadService.class));
+                        startService(new Intent(AdditionalInfoInputActivity.this, StepDetectorService.class));
 
                         startActivity(new Intent(AdditionalInfoInputActivity.this,MainActivity.class));
                         finish();

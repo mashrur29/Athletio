@@ -1,10 +1,10 @@
-package com.blogspot.athletio;
+package general;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 9/26/17.
@@ -23,20 +23,20 @@ public class Event {
     public static final int CANCELLED=2;
     public static final int FINISHED=3;
 
-    String key;
-    Day day;
-    int hour;
-    int min;
-    String title;
-    String description;
-    String creatorID;
-    String creatorName;
-    LatLng start;
-    LatLng stop;
-    int type;
-    double distanceInMeters;
-    long durationInSec;
-    int status;
+    public String key;
+    public Day day;
+    public int hour;
+    public int min;
+    public String title;
+    public String description;
+    public String creatorID;
+    public String creatorName;
+    public LatLng start;
+    public LatLng stop;
+    public int type;
+    public double distanceInMeters;
+    public long durationInSec;
+    public int status;
 
     public Event(Day day,int hour,int min, String creatorID,String creatorName, LatLng start, int type, long durationInSec,String title,String description) {
         this.day = day;
@@ -93,7 +93,7 @@ public class Event {
 
     }
 
-    int getStatus(){
+    public int getStatus(){
         if(this.status==Event.CANCELLED)
             return Event.CANCELLED;
 

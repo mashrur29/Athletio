@@ -12,6 +12,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import general.Post;
+
 /**
  * Created by tanvir on 10/12/17.
  */

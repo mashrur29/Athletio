@@ -6,7 +6,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +29,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
+
+import general.Workout;
 
 public class ShowWorkoutActivity extends AppCompatActivity implements OnMapReadyCallback {
     Workout workout;

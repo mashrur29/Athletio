@@ -3,13 +3,11 @@ package com.blogspot.athletio;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,7 +22,6 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,7 +29,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Date;
+import general.SmallWorkout;
+import services.FirebaseUploadService;
+import stepdetector.StepDetector;
+import storage.SharedPrefData;
 
 public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapReadyCallback {
     final static int INTERVAL=5000;
@@ -205,10 +205,10 @@ public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapRe
     void signOut(){
         SharedPrefData sharedPrefData=new SharedPrefData(this);
         sharedPrefData.clear();
-        Intent intent=new Intent(this,FirebaseUploadService.class);
+        Intent intent=new Intent(this, FirebaseUploadService.class);
         stopService(intent);
 
-        Intent intent2=new Intent(this,StepDetector.class);
+        Intent intent2=new Intent(this, StepDetector.class);
         stopService(intent2);
         FirebaseAuth.getInstance().signOut();
     }

@@ -34,10 +34,10 @@
         <activity android:name=".AdditionalInfoInputActivity" />
 
         <service
-            android:name=".FirebaseUploadService"
+            android:name="services.FirebaseUploadService"
             android:exported="false" />
         <service
-            android:name=".StepDetectorService"
+            android:name="services.StepDetectorService"
             android:exported="false" />
 
         <meta-data

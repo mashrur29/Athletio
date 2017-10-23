@@ -1,21 +1,22 @@
-package com.blogspot.athletio;
+package general;
 
 
 
 import java.util.HashMap;
 
-import Utility.JsonObjectParser;
+import general.Day;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/24/17.
  */
 
 public class UserData {
-    int height;
-    int weight;
-    HashMap<String, Integer> weightMap;
-    HashMap<String, Integer> stepCountMap;
-    HashMap<String, Integer> calorieMap;
+    public int height;
+    public int weight;
+    public HashMap<String, Integer> weightMap;
+    public HashMap<String, Integer> stepCountMap;
+    public HashMap<String, Integer> calorieMap;
 
     public UserData() {
     }

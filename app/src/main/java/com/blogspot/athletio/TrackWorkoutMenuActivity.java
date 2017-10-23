@@ -14,6 +14,10 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import services.FirebaseUploadService;
+import stepdetector.StepDetector;
+import storage.SharedPrefData;
+
 public class TrackWorkoutMenuActivity extends AppCompatActivity {
     Button runningbt,cyclingbt,treadmillbt,othersbt;
     @Override
@@ -107,10 +111,10 @@ public class TrackWorkoutMenuActivity extends AppCompatActivity {
     void signOut(){
         SharedPrefData sharedPrefData=new SharedPrefData(this);
         sharedPrefData.clear();
-        Intent intent=new Intent(this,FirebaseUploadService.class);
+        Intent intent=new Intent(this, FirebaseUploadService.class);
         stopService(intent);
 
-        Intent intent2=new Intent(this,StepDetector.class);
+        Intent intent2=new Intent(this, StepDetector.class);
         stopService(intent2);
         FirebaseAuth.getInstance().signOut();
     }

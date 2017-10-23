@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.vision.barcode.Barcode;
-
 import java.util.List;
+
+import general.Exercise;
 
 /**
  * Created by tanvir on 10/11/17.

@@ -16,7 +16,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
-import java.util.Date;
+import storage.SharedPrefData;
 
 public class EventReminderReceiver extends BroadcastReceiver{
 

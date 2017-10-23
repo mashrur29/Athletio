@@ -10,7 +10,6 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +30,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
+
+import general.Day;
+import general.SmallWorkout;
+import general.Workout;
+import storage.SharedPrefData;
 
 public class CyclingTrackActivity extends AppCompatActivity  implements OnMapReadyCallback {
 

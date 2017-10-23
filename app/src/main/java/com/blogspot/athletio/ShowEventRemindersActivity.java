@@ -5,12 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 import java.util.Vector;
+
+import general.Event;
+import services.FirebaseUploadService;
+import stepdetector.StepDetector;
+import storage.SharedPrefData;
 
 public class ShowEventRemindersActivity extends AppCompatActivity {
     SharedPrefData sharedPrefData;
@@ -124,10 +126,10 @@ public class ShowEventRemindersActivity extends AppCompatActivity {
     void signOut(){
         SharedPrefData sharedPrefData=new SharedPrefData(this);
         sharedPrefData.clear();
-        Intent intent=new Intent(this,FirebaseUploadService.class);
+        Intent intent=new Intent(this, FirebaseUploadService.class);
         stopService(intent);
 
-        Intent intent2=new Intent(this,StepDetector.class);
+        Intent intent2=new Intent(this, StepDetector.class);
         stopService(intent2);
         FirebaseAuth.getInstance().signOut();
     }

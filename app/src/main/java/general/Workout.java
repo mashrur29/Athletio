@@ -1,4 +1,4 @@
-package com.blogspot.athletio;
+package general;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/27/17.
@@ -18,16 +18,16 @@ public class Workout {
     public static final int VRTYPE=2;
 
 
-    int TYPE;
-    double distanceInMeters;
-    long timeInSec;
-    int weight;
-    String key;
-    HashMap<String ,LatLng> map;
-    Day day;
-    int hour;
-    int min;
-    int callorie;
+    public int TYPE;
+    public double distanceInMeters;
+    public long timeInSec;
+    public int weight;
+    public String key;
+    public HashMap<String ,LatLng> map;
+    public Day day;
+    public int hour;
+    public int min;
+    public int callorie;
 
 
 
@@ -84,12 +84,12 @@ public class Workout {
         return Integer.parseInt("0");
     }
 
-    LatLng getAt(int i){
+    public LatLng getAt(int i){
         String str="index"+i;
         return (LatLng)map.get(str);
     }
 
-    Vector<LatLng> getVector(){
+    public Vector<LatLng> getVector(){
         Vector<LatLng>ret=new Vector<LatLng>();
         for(int i=0;i<map.size();i++){
             ret.add(getAt(i));
@@ -98,7 +98,7 @@ public class Workout {
 
     }
 
-    Vector<MapPoint> getmpVector(){
+    public Vector<MapPoint> getmpVector(){
         Vector<MapPoint>ret=new Vector<MapPoint>();
         for(int i=0;i<map.size();i++){
             LatLng latLng=getAt(i);

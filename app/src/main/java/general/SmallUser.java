@@ -1,15 +1,15 @@
-package com.blogspot.athletio;
+package general;
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 9/27/17.
  */
 
 public class SmallUser {
-    String UID;
-    String name;
-    String photo;
+    public String UID;
+    public String name;
+    public String photo;
 
     public SmallUser(String UID, String name, String photo) {
         this.UID = UID;

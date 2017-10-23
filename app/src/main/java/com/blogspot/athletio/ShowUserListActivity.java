@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,6 +14,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 import java.util.Vector;
+
+import general.SmallUser;
 
 public class ShowUserListActivity extends AppCompatActivity {
     DatabaseReference mDatabase;

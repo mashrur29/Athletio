@@ -4,10 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,6 +22,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 
+import general.Day;
+import general.Post;
+
 public class PostPublishActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -31,7 +32,7 @@ public class PostPublishActivity extends AppCompatActivity {
     public static final int GALLERY_INTENT=2;
     String photoUri,postId;
     ProgressDialog progressDialog;
-    int type=Post.TEXT;
+    int type= Post.TEXT;
 
     SharedPreferences postsRef;
     SharedPreferences.Editor postsMapeditor ;

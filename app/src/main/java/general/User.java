@@ -1,6 +1,6 @@
-package com.blogspot.athletio;
+package general;
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/24/17.
@@ -9,8 +9,8 @@ import Utility.JsonObjectParser;
 
 public class User {
 
-    UserInfo userInfo;
-    UserData userData;
+    public UserInfo userInfo;
+    public UserData userData;
 
     public User() {
     }

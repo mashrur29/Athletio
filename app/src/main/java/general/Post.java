@@ -1,6 +1,6 @@
-package com.blogspot.athletio;
+package general;
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 9/27/17.
@@ -10,15 +10,15 @@ public class Post {
     public static final int TEXT=0;
     public static final int PHOTO=1;
 
-    String UID;
-    String uName;
-    String postId;
-    String body;
-    String photoUri;
-    int type;
-    Day day;
-    int hour;
-    int min;
+    public String UID;
+    public String uName;
+    public String postId;
+    public String body;
+    public String photoUri;
+    public int type;
+    public Day day;
+    public int hour;
+    public int min;
 
     public Post(String UID, String uName, String postId, String body, int type,Day day,int hour,int min) {
         this.UID = UID;

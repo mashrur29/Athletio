@@ -1,9 +1,7 @@
 package com.blogspot.athletio;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.audiofx.BassBoost;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,7 +14,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.net.Inet4Address;
+import general.User;
+import general.UserInfo;
+import services.FirebaseUploadService;
+import stepdetector.StepDetector;
+import storage.SharedPrefData;
 
 public class SettingsActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -139,10 +141,10 @@ public class SettingsActivity extends AppCompatActivity {
     void signOut(){
         SharedPrefData sharedPrefData=new SharedPrefData(this);
         sharedPrefData.clear();
-        Intent intent=new Intent(this,FirebaseUploadService.class);
+        Intent intent=new Intent(this, FirebaseUploadService.class);
         stopService(intent);
 
-        Intent intent2=new Intent(this,StepDetector.class);
+        Intent intent2=new Intent(this, StepDetector.class);
         stopService(intent2);
         FirebaseAuth.getInstance().signOut();
     }

@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import general.SmallUser;
+
 /**
  * Created by tanvir on 10/12/17.
  */

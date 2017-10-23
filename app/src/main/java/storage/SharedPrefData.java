@@ -1,8 +1,11 @@
-package com.blogspot.athletio;
+package storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
+
+import general.User;
+import general.UserData;
+import general.UserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +18,8 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class SharedPrefData {
-    Context context;
-    static boolean saved=false;
+    public Context context;
+    public static boolean saved=false;
     public static final String SAVED="saved";
     public static final String USERINFO="Userinfo";
     public static final String DISPLAYNAME="displayName";
@@ -111,7 +114,7 @@ public class SharedPrefData {
         editorSaved.putInt(SAVED,1);
         editorSaved.commit();
     }
-    void clear(){
+    public void clear(){
         SharedPreferences pref = context.getSharedPreferences(USERINFO, MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.clear();
@@ -139,11 +142,11 @@ public class SharedPrefData {
         editorSaved.putInt(SAVED,0);
         editorSaved.commit();
     }
-    boolean getSaved(){
+    public boolean getSaved(){
         SharedPreferences prefSaved = context.getSharedPreferences(SAVED, MODE_PRIVATE);
         return prefSaved.getInt(SAVED,0)==1;
     }
-    User getUser(){
+    public User getUser(){
         if(!getSaved())return null;
         SharedPreferences pref = context.getSharedPreferences(USERINFO, MODE_PRIVATE);
         User ret=new User();

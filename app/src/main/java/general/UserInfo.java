@@ -1,18 +1,18 @@
-package com.blogspot.athletio;
+package general;
 
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/24/17.
  */
 public class UserInfo {
-    String displayName;
-    int birthDate;
-    int birthMonth;
-    int birthYear;
-    String gender;
-    String email;
+    public String displayName;
+    public int birthDate;
+    public int birthMonth;
+    public int birthYear;
+    public String gender;
+    public String email;
 
     public UserInfo() {
     }

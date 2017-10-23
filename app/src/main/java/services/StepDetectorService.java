@@ -1,4 +1,4 @@
-package com.blogspot.athletio;
+package services;
 
 import android.app.Service;
 import android.content.Intent;
@@ -11,14 +11,19 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import general.Day;
+import stepdetector.StepDetector;
+import stepdetector.StepListener;
 import com.google.firebase.auth.FirebaseAuth;
+
+import storage.SharedPrefData;
 
 
 /**
  * Created by tanvir on 8/28/17.
  */
 
-public class StepDetectorService extends Service implements SensorEventListener, StepListener{
+public class StepDetectorService extends Service implements SensorEventListener, StepListener {
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;
     private Sensor accel;

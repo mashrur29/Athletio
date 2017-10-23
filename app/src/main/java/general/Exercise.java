@@ -1,15 +1,15 @@
-package com.blogspot.athletio;
+package general;
 
-import Utility.JsonObjectParser;
+import utility.JsonObjectParser;
 
 /**
  * Created by tanvir on 8/26/17.
  */
 
 public class Exercise {
-    String title;
-    String description;
-    String category;
+    public String title;
+    public String description;
+    public String category;
 
     public Exercise() {
     }

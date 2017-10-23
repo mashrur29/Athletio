@@ -12,6 +12,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import general.Day;
+import general.User;
+import storage.SharedPrefData;
+
 public class MyStatsActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     FirebaseAuth mAuth;
