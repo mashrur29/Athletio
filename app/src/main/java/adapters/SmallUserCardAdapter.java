@@ -1,4 +1,4 @@
-package com.blogspot.athletio;
+package adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blogspot.athletio.R;
+import com.blogspot.athletio.ShowProfileActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,7 +23,7 @@ import general.SmallUser;
 
 public class SmallUserCardAdapter  extends RecyclerView.Adapter<SmallUserCardAdapter.SmallUserHolder>{
     private List<SmallUser> List;
-    Context context;
+    public Context context;
 
     public SmallUserCardAdapter(List<SmallUser> List) {
         this.List = List;

@@ -1,4 +1,4 @@
-package com.blogspot.athletio;
+package adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blogspot.athletio.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import general.Post;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder>{
 
     private List<Post> List;
-    Context context;
+    public Context context;
 
     public PostAdapter(List<Post> List) {
         this.List=List;

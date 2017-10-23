@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 import java.util.Vector;
 
+import adapters.PostAdapter;
 import general.Post;
 import services.FirebaseUploadService;
 import stepdetector.StepDetector;

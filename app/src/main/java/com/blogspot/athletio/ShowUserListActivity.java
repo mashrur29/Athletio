@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 import java.util.Vector;
 
+import adapters.SmallUserCardAdapter;
 import general.SmallUser;
 
 public class ShowUserListActivity extends AppCompatActivity {

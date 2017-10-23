@@ -1,4 +1,4 @@
-package com.blogspot.athletio;
+package receivers;
 
 /**
  * Created by tanvir on 9/26/17.
@@ -15,6 +15,9 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+
+import com.blogspot.athletio.R;
+import com.blogspot.athletio.ShowEventActivity;
 
 import storage.SharedPrefData;
 

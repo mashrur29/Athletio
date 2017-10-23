@@ -1,10 +1,12 @@
-package com.blogspot.athletio;
+package adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.blogspot.athletio.R;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ import general.Exercise;
 
 public class ExcerciseAdapter extends RecyclerView.Adapter<ExcerciseAdapter.ExerciseViewHolder> {
 
-    private List<Exercise> List;
+    public  List<Exercise> List;
 
     public ExcerciseAdapter(List<Exercise> List) {
         this.List = List;

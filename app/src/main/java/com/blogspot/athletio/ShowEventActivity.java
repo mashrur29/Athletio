@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
+import receivers.EventReminderReceiver;
 import general.Event;
 import storage.SharedPrefData;
 
@@ -190,7 +191,7 @@ public class ShowEventActivity extends AppCompatActivity {
     void addEventAlarm(String title, String note, int reqid, Calendar calendar,String key){
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        Intent notificationIntent = new Intent(ShowEventActivity.this,EventReminderReceiver.class);
+        Intent notificationIntent = new Intent(ShowEventActivity.this, EventReminderReceiver.class);
         notificationIntent.addCategory("android.intent.category.DEFAULT");
         notificationIntent.putExtra("title", title);
         notificationIntent.putExtra("notes", note);

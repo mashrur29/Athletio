@@ -59,7 +59,7 @@
         <activity android:name=".ShowWorkoutActivity" />
         <activity android:name=".ShowEventActivity" />
 
-        <receiver android:name=".EventReminderReceiver">
+        <receiver android:name="receivers.EventReminderReceiver">
             <intent-filter>
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
             </intent-filter>
