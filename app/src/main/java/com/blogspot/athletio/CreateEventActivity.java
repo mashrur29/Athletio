@@ -246,6 +246,9 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menuHome:
+                startActivity(new Intent(this,MainActivity.class));
+                return true;
             case R.id.menuTrackWorkout:
                 startActivity(new Intent(this, TrackWorkoutMenuActivity.class));
                 return true;
@@ -264,7 +267,6 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
             case R.id.menuEvents:
                 startActivity(new Intent(this, EventsActivity.class));
                 return true;
-
             case R.id.menuEventReminder:
                 startActivity(new Intent(this, ShowEventRemindersActivity.class));
                 return true;

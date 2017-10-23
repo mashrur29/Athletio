@@ -96,6 +96,9 @@ public class NewsFeedActivity extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menuHome:
+                startActivity(new Intent(this,MainActivity.class));
+                return true;
             case R.id.menuTrackWorkout:
                 startActivity(new Intent(this, TrackWorkoutMenuActivity.class));
                 return true;

@@ -1,5 +1,6 @@
 package adapters;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.blogspot.athletio.R;
+import com.blogspot.athletio.ShowProfileActivity;
+import com.blogspot.athletio.ShowWorkoutActivity;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
 
     public WorkoutAdapter(List<Workout> list) {
         this.list=list;
+        WorkoutViewHolder.list=list;
     }
 
     @Override
@@ -53,6 +57,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
     }
 
     public static class WorkoutViewHolder extends RecyclerView.ViewHolder {
+        static public  List<Workout> list;
         protected TextView time;
         protected TextView type;
         protected TextView callorie;
@@ -68,6 +73,17 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
             distance =  (TextView) v.findViewById(R.id.workout_distance_covered_amount);
             duration= (TextView)v.findViewById(R.id.workout_duration_amount);
             speed= (TextView)v.findViewById(R.id.workout_average_speed);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int pos = getPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        Intent intent=new Intent(v.getContext(),ShowWorkoutActivity.class);
+                        intent.putExtra("WorkoutKey",list.get(pos).key.toString());
+                        v.getContext().startActivity(intent);
+                    }
+                }
+            });
 
 
         }

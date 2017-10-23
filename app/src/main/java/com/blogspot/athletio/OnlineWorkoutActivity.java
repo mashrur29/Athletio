@@ -159,7 +159,6 @@ public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapRe
         return false;
 
     }
-
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
@@ -168,6 +167,9 @@ public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapRe
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menuHome:
+                startActivity(new Intent(this,MainActivity.class));
+                return true;
             case R.id.menuTrackWorkout:
                 startActivity(new Intent(this, TrackWorkoutMenuActivity.class));
                 return true;

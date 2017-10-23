@@ -1,4 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuHome"
+        android:title="Home" />
     <item android:id="@+id/menuTrackWorkout"
         android:title="Track Workout" />
     <item android:id="@+id/menuOnlineWorkout"
