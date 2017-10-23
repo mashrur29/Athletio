@@ -19,7 +19,8 @@ import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
 public class TrackWorkoutMenuActivity extends AppCompatActivity {
-    Button runningbt,cyclingbt,treadmillbt,othersbt;
+    Button runningButton, cyclingButton, treadmillButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,22 +29,22 @@ public class TrackWorkoutMenuActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        runningbt=(Button)findViewById(R.id.trackworkoutmenurunningbt);
-        runningbt.setOnClickListener(new View.OnClickListener() {
+        runningButton =(Button)findViewById(R.id.track_workout_layout_running_button);
+        runningButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TrackWorkoutMenuActivity.this,RunningTrackActivity.class));
             }
         });
-        cyclingbt=(Button)findViewById(R.id.trackworkoutmenucyclingbt);
-        cyclingbt.setOnClickListener(new View.OnClickListener() {
+        cyclingButton =(Button)findViewById(R.id.track_workout_layout_cycling_button);
+        cyclingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TrackWorkoutMenuActivity.this,CyclingTrackActivity.class));
             }
         });
-        treadmillbt=(Button)findViewById(R.id.trackworkoutmenutreadmillvrbt);
-        treadmillbt.setOnClickListener(new View.OnClickListener() {
+        treadmillButton =(Button)findViewById(R.id.track_workout_layout_treadmill_vr_button);
+        treadmillButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openApp(TrackWorkoutMenuActivity.this,"com.blogspot.athelioappvr","AthelioVR");

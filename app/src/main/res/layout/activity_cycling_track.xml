@@ -8,7 +8,7 @@
     tools:context="com.blogspot.athletio.RunningTrackActivity">
 
     <fragment
-        android:id="@+id/cyclingmap"
+        android:id="@+id/cycling_track_layout_map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:id="@+id/cyclingtracktv"/>
+        android:id="@+id/cycling_track_layout_data_textview"/>
 
 
 </LinearLayout>

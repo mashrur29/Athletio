@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -33,10 +32,8 @@ public class EventsActivity extends AppCompatActivity {
 
     List<Event> events=new Vector<Event>();
 
-    //
-    TextView tv;
-    RecyclerView recList;
-   //
+    RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +43,11 @@ public class EventsActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Events");
 
-        setupUI();
-        recList = (RecyclerView) findViewById(R.id.eventCardList);
+
+        recyclerView = (RecyclerView) findViewById(R.id.event_layout_card_list);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -77,27 +74,10 @@ public class EventsActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-
-        recList.setAdapter(new EventAdapter(events));
+        Collections.reverse(events);
+        recyclerView.setAdapter(new EventAdapter(events));
     }
 
-    private void setupUI() {
-        tv=(TextView)findViewById(R.id.eventstv);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(events.get(0)!=null){
-                    showEvent(events.get(0).key.toString());
-                }
-            }
-        });
-    }
-
-    void showEvent(String event){
-        Intent intent=new Intent(EventsActivity.this,ShowEventActivity.class);
-        intent.putExtra("EVENT",event);
-        startActivity(intent);
-    }
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();

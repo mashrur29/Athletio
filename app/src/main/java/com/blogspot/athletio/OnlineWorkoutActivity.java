@@ -91,7 +91,7 @@ public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapRe
             boolean isGPSEnabled = locationManager
                     .isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-            // getting network status
+            // getting network statusTextview
             boolean isNetworkEnabled = locationManager
                     .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
             if(!isGPSEnabled){
@@ -130,7 +130,7 @@ public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapRe
         }
     }
     private void initMap() {
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.onlineworkoutmap);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.online_workout_layout_map);
         mapFragment.getMapAsync(this);
 
     }

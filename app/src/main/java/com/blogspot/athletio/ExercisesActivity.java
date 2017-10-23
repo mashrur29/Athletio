@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,9 +31,9 @@ import storage.SharedPrefData;
 public class ExercisesActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     List<Exercise> exercises;
-    RecyclerView recList;
-    TextView tv;
-    EditText searchet;
+    RecyclerView recyclerView;
+
+    EditText searchEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +43,10 @@ public class ExercisesActivity extends AppCompatActivity {
 
         setupUI();
 
-        recList = (RecyclerView) findViewById(R.id.excercisescardList);
+        recyclerView = (RecyclerView) findViewById(R.id.exercises_layout_card_list);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
 
         exercises=new ArrayList<Exercise>();
@@ -74,13 +73,12 @@ public class ExercisesActivity extends AppCompatActivity {
 
     private void updateUI() {
         ExcerciseAdapter excerciseAdapter=new ExcerciseAdapter(exercises);
-        recList.setAdapter(excerciseAdapter);
+        recyclerView.setAdapter(excerciseAdapter);
     }
 
     private void setupUI() {
-        tv=(TextView)findViewById(R.id.exercisestv);
-        searchet=(EditText)findViewById(R.id.exercisessearchet);
-        searchet.addTextChangedListener(new TextWatcher() {
+        searchEditText =(EditText)findViewById(R.id.exercises_layout_search_edittext);
+        searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 

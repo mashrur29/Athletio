@@ -8,7 +8,7 @@
     android:background="@color/dark">
 
     <ImageView
-        android:id="@+id/circleImageView"
+        android:id="@+id/sign_in_layout_logo_imageview"
         android:layout_width="1000dp"
         android:layout_height="1000dp"
         android:src="@drawable/logo"
@@ -18,7 +18,7 @@
         android:layout_alignParentStart="true" />
 
     <com.google.android.gms.common.SignInButton
-        android:id="@+id/signinbutton"
+        android:id="@+id/sign_in_layout_sign_in_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="193dp"

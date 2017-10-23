@@ -9,8 +9,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="click"
-        android:id="@+id/showeventbt"/>
+        android:text="ADD REMINDER"
+        android:id="@+id/show_event_layout_add_reminder_button"/>
 
 
     <RelativeLayout
@@ -21,13 +21,13 @@
             android:layout_height="wrap_content"
             android:text="Title"
             android:textColor="@color/background"
-            android:id="@+id/showeventTitle"
+            android:id="@+id/show_event_layout_title"
             android:textSize="20dp"/>
         <LinearLayout
-            android:id="@+id/showeventpostLinearLayout"
+            android:id="@+id/show_event_layout_post_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/showeventTitle"
+            android:layout_below="@+id/show_event_layout_title"
             android:layout_margin="5dp"
             android:orientation="horizontal">
             <TextView
@@ -37,7 +37,7 @@
                 android:textSize="16dp"
                 />
             <TextView
-                android:id="@+id/showeventTimeDate"
+                android:id="@+id/show_event_layout_time_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="11 oct 2017 12:30 AM"
@@ -47,12 +47,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/showeventpostDetailLinearLayout"
-            android:layout_below="@+id/showeventpostLinearLayout"
+            android:id="@+id/show_event_layout_post_details_layout"
+            android:layout_below="@+id/show_event_layout_post_layout"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp">
             <TextView
-                android:id="@+id/showeventDescription"
+                android:id="@+id/show_event_layout_event_description_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"
@@ -62,7 +62,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/showeventpostDetailLinearLayout"
+            android:layout_below="@+id/show_event_layout_post_details_layout"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,14 +71,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/showeventDescription"
+                    android:layout_below="@id/show_event_layout_event_description_textview"
                     android:text="Host: "
                     android:textAlignment="center"
                     android:textSize="15dp"
                     android:layout_weight="1"
                     />
                 <TextView
-                    android:id="@+id/showeventHostName"
+                    android:id="@+id/show_event_layout_host_name_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" Tanvir Fahim"
@@ -100,7 +100,7 @@
                     android:layout_weight="1"
                     />
                 <TextView
-                    android:id="@+id/showeventType"
+                    android:id="@+id/show_event_layout_event_type_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Running"
@@ -122,7 +122,7 @@
                     android:textAlignment="center"
                     />
                 <TextView
-                    android:id="@+id/showeventDistance"
+                    android:id="@+id/show_event_layout_event_distance_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10 kilometer"
@@ -144,7 +144,7 @@
                     android:textAlignment="center"
                     />
                 <TextView
-                    android:id="@+id/showeventDuration"
+                    android:id="@+id/show_event_layout_event_duration_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5 hours 30 mininutes"
@@ -166,7 +166,7 @@
                     android:textAlignment="center"
                     />
                 <TextView
-                    android:id="@+id/showeventStatus"
+                    android:id="@+id/show_event_layout_event_status_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Active"
@@ -188,7 +188,7 @@
                     android:textAlignment="center"
                     />
                 <TextView
-                    android:id="@+id/showeventstartloction"
+                    android:id="@+id/show_event_layout_event_start_loc_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show in MAP"
@@ -210,7 +210,7 @@
                     android:textAlignment="center"
                     />
                 <TextView
-                    android:id="@+id/showeventEndloction"
+                    android:id="@+id/show_event_layout_event_stop_loc_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show in MAP"

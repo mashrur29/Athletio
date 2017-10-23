@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mainStatTableLayout"
+            android:id="@+id/main_layout_stat_table_layout"
             android:orientation="vertical"
             >
             <TableLayout
@@ -36,7 +36,6 @@
                         android:layout_height="wrap_content"
                         android:layout_width="fill_parent"
                         android:textAlignment="center"
-                        android:id="@+id/mainStat"
                         android:layout_weight="1" />
                 </TableRow>
                 <TableRow
@@ -63,7 +62,7 @@
                     <TextView
                         android:text="2140"
                         android:textSize="30dp"
-                        android:id="@+id/mainsteps"
+                        android:id="@+id/main_layout_steps_textview"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:layout_height="wrap_content"
@@ -73,7 +72,7 @@
                     <TextView
                         android:text="2130"
                         android:textAlignment="center"
-                        android:id="@+id/maincalorie"
+                        android:id="@+id/main_layout_callorie_textview"
                         android:textSize="30dp"
                         android:textColor="@color/white"
                         android:layout_height="wrap_content"
@@ -102,14 +101,16 @@
             </TableLayout>
         </LinearLayout>
 
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mainStatTableLayout"
+            android:layout_below="@+id/main_layout_stat_table_layout"
             android:id="@+id/mainRankTableLayout">
 
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
             <TableLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -122,7 +123,6 @@
                     android:layout_margin="10dp">
 
                     <TextView
-                        android:id="@+id/mainRank"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Rank"
@@ -160,7 +160,7 @@
                     android:layout_margin="10dp">
 
                     <TextView
-                        android:id="@+id/mainListName1"
+                        android:id="@+id/main_layout_rank_name1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Tanvir"
@@ -169,7 +169,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/mainListStepCount1"
+                        android:id="@+id/main_layout_rank_steps1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="4432"
@@ -185,7 +185,7 @@
                     android:layout_margin="10dp">
 
                     <TextView
-                        android:id="@+id/mainListName2"
+                        android:id="@+id/main_layout_rank_name2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
@@ -194,7 +194,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/mainListStepCount2"
+                        android:id="@+id/main_layout_rank_steps2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
@@ -209,7 +209,7 @@
                     android:layout_margin="10dp">
 
                     <TextView
-                        android:id="@+id/mainListName3"
+                        android:id="@+id/main_layout_rank_name3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Kashob"
@@ -218,7 +218,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/mainListStepCount3"
+                        android:id="@+id/main_layout_rank_steps3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="2276"
@@ -233,7 +233,7 @@
                     android:layout_margin="10dp">
 
                     <TextView
-                        android:id="@+id/mainListName4"
+                        android:id="@+id/main_layout_rank_name4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="John"
@@ -242,7 +242,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/mainListStepCount4"
+                        android:id="@+id/main_layout_rank_steps4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="890"
@@ -257,7 +257,7 @@
                     android:layout_margin="10dp">
 
                     <TextView
-                        android:id="@+id/mainListName5"
+                        android:id="@+id/main_layout_rank_name5"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Bob"
@@ -266,7 +266,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/mainListStepCount5"
+                        android:id="@+id/main_layout_rank_steps5"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="230"

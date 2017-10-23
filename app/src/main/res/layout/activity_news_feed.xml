@@ -11,20 +11,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Search for Persons"
-            android:id="@+id/newsfeedsearchpersonbt"/>
+            android:id="@+id/news_feed_layout_search_person_button"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Post"
-            android:id="@+id/newsfeedpostbt"/>
+            android:textAlignment="center"
+            android:id="@+id/news_feed_layout_post_button"/>
     </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/newsFeedCardList"
+        android:id="@+id/news_feed_layout_card_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

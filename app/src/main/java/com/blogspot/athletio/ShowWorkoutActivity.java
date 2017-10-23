@@ -66,7 +66,7 @@ public class ShowWorkoutActivity extends AppCompatActivity implements OnMapReady
 
     }
     private void setupUI() {
-        tv=(TextView)findViewById(R.id.showworkouttv);
+        tv=(TextView)findViewById(R.id.show_workout_layout_textview);
     }
     private void updateUI() {
         Vector<LatLng>latLngs=workout.getVector();
@@ -87,7 +87,7 @@ public class ShowWorkoutActivity extends AppCompatActivity implements OnMapReady
 
 
     private void initMap() {
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.showworkoutmap);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.show_workout_layout_map);
         mapFragment.getMapAsync(this);
 
     }

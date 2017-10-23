@@ -22,7 +22,7 @@ public class ShowUserListActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
 
     List<SmallUser> smallUsers;
-    RecyclerView recList;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +30,10 @@ public class ShowUserListActivity extends AppCompatActivity {
 
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Userlist");
         smallUsers=new Vector<SmallUser>();
-        recList = (RecyclerView) findViewById(R.id.smallusercardList);
+        recyclerView = (RecyclerView) findViewById(R.id.show_user_list_layout_card_list);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
 
         setupUI();
@@ -58,7 +58,7 @@ public class ShowUserListActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        recList.setAdapter(new SmallUserCardAdapter(smallUsers));
+        recyclerView.setAdapter(new SmallUserCardAdapter(smallUsers));
     }
 
     private void setupUI() {

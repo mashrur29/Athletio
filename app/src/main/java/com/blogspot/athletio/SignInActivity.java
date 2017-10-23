@@ -1,13 +1,9 @@
 package com.blogspot.athletio;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -26,18 +22,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class SignInActivity extends AppCompatActivity {
-    //UI variables - START
-    SignInButton mSignInButton;
-    //UI varibles - END
+
+    final int RC_SIGN_IN=2;
 
     GoogleApiClient mGoogleApiClient;
     FirebaseAuth mAuth;
-    final int RC_SIGN_IN=2;
     FirebaseAuth.AuthStateListener mAuthListener;
+
+    SignInButton mSignInButton;
 
     @Override
     protected void onStart() {
@@ -119,7 +112,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     void setUpUI(){
-        mSignInButton=(SignInButton)findViewById(R.id.signinbutton);
+        mSignInButton=(SignInButton)findViewById(R.id.sign_in_layout_sign_in_button);
         mSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

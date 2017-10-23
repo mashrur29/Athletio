@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/smallusercardList"
+        android:id="@+id/show_user_list_layout_card_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

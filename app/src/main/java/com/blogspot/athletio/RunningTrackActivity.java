@@ -44,18 +44,19 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
     Vector<LatLng> latLngs=new Vector<LatLng>();
     LocationManager locationManager;
     android.location.LocationListener locationListener;
-    double dist=0;
-    int tick=0;
-    boolean first=true;
-    long time=0;
-    Date initTime;
-    Thread t;
-    boolean b=true;
+
+    double distanceCovered =0;
+    int locationNumbersGot =0;
+    boolean firstLocation =true, viewThreadRunning =true;
+    long timeOfWorkoutInSecond =0;
+    Date date;
+    Thread viewThread;
 
     DatabaseReference mDatabase,mCurrentWorkoutDb;
     FirebaseAuth mAuth;
 
-    TextView tv;
+
+    TextView dataTextview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +69,9 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
         mCurrentWorkoutDb=mCurrentWorkoutDb.child(key);
 
         setupUI();
-        initTime=new Date();
+        date =new Date();
 
-        if (gservicesavailable()) {
+        if (gservicesAvailable()) {
             initMap();
             locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -78,20 +79,20 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
                 @Override
                 public void onLocationChanged(Location location) {
                     LatLng ll=new LatLng(location.getLatitude(),location.getLongitude());
-                    if(first){
+                    if(firstLocation){
                         gotoloc(ll.latitude,ll.longitude,15);
-                        first=false;
-                        t = new Thread() {
+                        firstLocation =false;
+                        viewThread = new Thread() {
                             @Override
                             public void run() {
                                 try {
-                                    while (!isInterrupted()&&b) {
+                                    while (!isInterrupted()&& viewThreadRunning) {
                                         Thread.sleep(1000);
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                time=new Date().getTime()-initTime.getTime();
-                                                time/=1000;
+                                                timeOfWorkoutInSecond =new Date().getTime()- date.getTime();
+                                                timeOfWorkoutInSecond /=1000;
                                                 updateUI();
                                             }
                                         });
@@ -101,7 +102,7 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
                             }
                         };
 
-                        t.start();
+                        viewThread.start();
 
                     }
                     else {
@@ -121,10 +122,10 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
                     }
                     if(latLngs.size()>1){
                         LatLng last=latLngs.get(latLngs.size()-2);
-                        dist+=haversine(ll.latitude,ll.longitude,last.latitude,last.longitude);
+                        distanceCovered +=haversine(ll.latitude,ll.longitude,last.latitude,last.longitude);
                     }
-                    tick++;
-                    if(tick>200){
+                    locationNumbersGot++;
+                    if(locationNumbersGot >200){
 
                         startActivity(new Intent(RunningTrackActivity.this,TrackWorkoutMenuActivity.class));
                         finish();
@@ -160,7 +161,7 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
             boolean isGPSEnabled = locationManager
                     .isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-            // getting network status
+            // getting network statusTextview
             boolean isNetworkEnabled = locationManager
                     .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
             if(!isGPSEnabled){
@@ -176,11 +177,11 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
     }
 
     private void updateUI() {
-        tv.setText("Distance: "+Math.round(dist*100)/100+"m"+"\n"+"Time: "+time);
+        dataTextview.setText("Distance: "+Math.round(distanceCovered *100)/100+"m"+"\n"+"Time: "+ timeOfWorkoutInSecond);
     }
 
     private void setupUI() {
-        tv=(TextView)findViewById(R.id.runningtracktv);
+        dataTextview =(TextView)findViewById(R.id.running_track_layout_data_textview);
     }
 
     @Override
@@ -189,12 +190,12 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
     }
 
     private void initMap() {
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.runningmap);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.running_track_layout_map);
         mapFragment.getMapAsync(this);
 
     }
 
-    public boolean gservicesavailable() {
+    public boolean gservicesAvailable() {
         GoogleApiAvailability api = GoogleApiAvailability.getInstance();
         int isavailable = api.isGooglePlayServicesAvailable(this);
         if (isavailable == ConnectionResult.SUCCESS) {
@@ -209,12 +210,6 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
 
     }
 
-    private void gotoloc(double lat, double lng) {
-        LatLng ll = new LatLng(lat, lng);
-        CameraUpdate update = CameraUpdateFactory.newLatLng(ll);
-        mgoogleMap.moveCamera(update);
-
-    }
 
     private void gotoloc(double lat, double lng, float zoom) {
         LatLng ll = new LatLng(lat, lng);
@@ -226,10 +221,10 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        b=false;
+        viewThreadRunning =false;
         String key = mDatabase.push().getKey();
         SharedPreferences pref = RunningTrackActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
-        Workout pushWorkout=new Workout(Workout.RUNTYPE,dist,  time,pref.getInt(SharedPrefData.WEIGHT, 0),latLngs,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
+        Workout pushWorkout=new Workout(Workout.RUNTYPE, distanceCovered, timeOfWorkoutInSecond,pref.getInt(SharedPrefData.WEIGHT, 0),latLngs,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
         mDatabase.child(key).setValue(pushWorkout);
         locationManager.removeUpdates(locationListener);
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).child("workouts").child(key).setValue(key);

@@ -8,7 +8,7 @@
     tools:context="com.blogspot.athletio.ChooseLatFromMapActivity">
 
     <fragment
-        android:id="@+id/choose_lat_from_map_map"
+        android:id="@+id/choose_lat_from_map_layout_map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,5 +17,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DONE"
-        android:id="@+id/choose_lat_from_map_submit_button"/>
+        android:id="@+id/choose_lat_from_map_layout_submit_button"/>
 </LinearLayout>

@@ -2,12 +2,12 @@ package com.blogspot.athletio;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,11 +34,10 @@ public class PostPublishActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     int type= Post.TEXT;
 
-    SharedPreferences postsRef;
-    SharedPreferences.Editor postsMapeditor ;
 
-    ImageView imageView;
-    Button postpublishbt,uploadphtobt;
+    EditText postBody;
+    ImageView postImageView;
+    Button postSubmitButton, uploadPhotoButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,16 +53,17 @@ public class PostPublishActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        imageView=(ImageView)findViewById(R.id.postpublishiv);
-        postpublishbt=(Button)findViewById(R.id.postpublishbt);
-        postpublishbt.setOnClickListener(new View.OnClickListener() {
+        postBody=(EditText)findViewById(R.id.post_publish_layout_post_body_edittext);
+        postImageView =(ImageView)findViewById(R.id.post_publish_layout_post_imageview);
+        postSubmitButton =(Button)findViewById(R.id.post_publish_layout_submit_button);
+        postSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                publishPost("weihwieudhw");
+                publishPost(postBody.getText().toString());
             }
         });
-        uploadphtobt=(Button)findViewById(R.id.postpublishuploadphotobt);
-        uploadphtobt.setOnClickListener(new View.OnClickListener() {
+        uploadPhotoButton =(Button)findViewById(R.id.post_publish_layout_upload_photo_button);
+        uploadPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 choosePhoto();
@@ -115,7 +115,7 @@ public class PostPublishActivity extends AppCompatActivity {
                     Uri photoUrl=taskSnapshot.getDownloadUrl();
                     photoUri=photoUrl.toString();
                     type=Post.PHOTO;
-                    Picasso.with(PostPublishActivity.this).load(photoUrl).into(imageView);
+                    Picasso.with(PostPublishActivity.this).load(photoUrl).into(postImageView);
                 }
             });
         }

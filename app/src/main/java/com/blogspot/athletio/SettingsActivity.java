@@ -23,9 +23,8 @@ import storage.SharedPrefData;
 public class SettingsActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
-
-    Button submit;
-    EditText birthDate,birthMonth,birthYear,height;
+    Button submitButton;
+    EditText birthDateEdittext, birthMonthEdittext, birthYearEdittext, heightEdittext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,27 +38,27 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setupUI() {
         User user=new SharedPrefData(SettingsActivity.this).getUser();
-        birthDate=(EditText)findViewById(R.id.settingsbirthdate);
-        birthDate.setText(user.userInfo.birthDate+"");
-        birthMonth=(EditText)findViewById(R.id.settingsbirthmonth);
-        birthMonth.setText(user.userInfo.birthMonth+"");
-        birthYear=(EditText)findViewById(R.id.settingsbirthyear);
-        birthYear.setText(user.userInfo.birthYear+"");
-        height=(EditText)findViewById(R.id.settingsheight);
-        height.setText(user.userData.height+"");
-        submit=(Button)findViewById(R.id.settingssubmitbutton);
-        submit.setOnClickListener(new View.OnClickListener() {
+        birthDateEdittext =(EditText)findViewById(R.id.settings_layout_birthdate_edittext);
+        birthDateEdittext.setText(user.userInfo.birthDate+"");
+        birthMonthEdittext =(EditText)findViewById(R.id.settings_layout_birthmonth_edittext);
+        birthMonthEdittext.setText(user.userInfo.birthMonth+"");
+        birthYearEdittext =(EditText)findViewById(R.id.settings_layout_birthyear_edittext);
+        birthYearEdittext.setText(user.userInfo.birthYear+"");
+        heightEdittext =(EditText)findViewById(R.id.settings_layout_height_edittext);
+        heightEdittext.setText(user.userData.height+"");
+        submitButton =(Button)findViewById(R.id.settings_layout_submit_button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
-                    Integer.parseInt(birthDate.getText().toString());
+                    Integer.parseInt(birthDateEdittext.getText().toString());
                 }
                 catch (Exception e){
                     Toast.makeText(SettingsActivity.this,"Put Bithdate in correct form",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try{
-                    Integer.parseInt(birthMonth.getText().toString());
+                    Integer.parseInt(birthMonthEdittext.getText().toString());
                 }
                 catch (Exception e){
                     Toast.makeText(SettingsActivity.this,"Put Bithmonth in correct form",Toast.LENGTH_SHORT).show();
@@ -67,29 +66,29 @@ public class SettingsActivity extends AppCompatActivity {
 
                 }
                 try{
-                    Integer.parseInt(birthYear.getText().toString());
+                    Integer.parseInt(birthYearEdittext.getText().toString());
                 }
                 catch (Exception e){
                     Toast.makeText(SettingsActivity.this,"Put Birthyear in correct form",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try{
-                    Integer.parseInt(height.getText().toString());
+                    Integer.parseInt(heightEdittext.getText().toString());
                 }
                 catch (Exception e){
                     Toast.makeText(SettingsActivity.this,"Put Height in correct form",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                UserInfo userInfo=new UserInfo(mAuth.getCurrentUser().getDisplayName(),Integer.parseInt(birthDate.getText().toString()),Integer.parseInt(birthMonth.getText().toString()),Integer.parseInt(birthYear.getText().toString()),new SharedPrefData(SettingsActivity.this).getUser().userInfo.gender,mAuth.getCurrentUser().getEmail());
+                UserInfo userInfo=new UserInfo(mAuth.getCurrentUser().getDisplayName(),Integer.parseInt(birthDateEdittext.getText().toString()),Integer.parseInt(birthMonthEdittext.getText().toString()),Integer.parseInt(birthYearEdittext.getText().toString()),new SharedPrefData(SettingsActivity.this).getUser().userInfo.gender,mAuth.getCurrentUser().getEmail());
 
                 SharedPreferences pref = SettingsActivity.this.getSharedPreferences(SharedPrefData.USERINFO, MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putString(SharedPrefData.DISPLAYNAME,mAuth.getCurrentUser().getDisplayName());
-                editor.putInt(SharedPrefData.BIRTHDATE,Integer.parseInt(birthDate.getText().toString()));
-                editor.putInt(SharedPrefData.BIRTHMONTH,Integer.parseInt(birthMonth.getText().toString()));
-                editor.putInt(SharedPrefData.BIRTHYEAR,Integer.parseInt(birthYear.getText().toString()));
+                editor.putInt(SharedPrefData.BIRTHDATE,Integer.parseInt(birthDateEdittext.getText().toString()));
+                editor.putInt(SharedPrefData.BIRTHMONTH,Integer.parseInt(birthMonthEdittext.getText().toString()));
+                editor.putInt(SharedPrefData.BIRTHYEAR,Integer.parseInt(birthYearEdittext.getText().toString()));
                 editor.putString(SharedPrefData.EMAIL,mAuth.getCurrentUser().getEmail());
-                editor.putInt(SharedPrefData.HEIGHT,Integer.parseInt(height.getText().toString()));
+                editor.putInt(SharedPrefData.HEIGHT,Integer.parseInt(heightEdittext.getText().toString()));
                 editor.commit();
                 Toast.makeText(SettingsActivity.this,"Updated Successfully",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(SettingsActivity.this,MainActivity.class));

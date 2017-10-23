@@ -43,7 +43,7 @@ public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMap
     }
 
     private void setupUI() {
-        submitButton =(Button)findViewById(R.id.choose_lat_from_map_submit_button);
+        submitButton =(Button)findViewById(R.id.choose_lat_from_map_layout_submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +64,7 @@ public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMap
 
 
     private void initMap() {
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.choose_lat_from_map_map);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.choose_lat_from_map_layout_map);
         mapFragment.getMapAsync(this);
 
     }

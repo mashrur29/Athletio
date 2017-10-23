@@ -28,25 +28,26 @@ import storage.SharedPrefData;
 public class ShowEventRemindersActivity extends AppCompatActivity {
     SharedPrefData sharedPrefData;
     DatabaseReference mDatabase;
-    Vector<String> keys;
+    Vector<String> eventKeys;
 
     List<Event> events;
 
-    RecyclerView recList;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_event_reminder);
-        recList = (RecyclerView) findViewById(R.id.eventReminderCardList);
+        setContentView(R.layout.activity_show_event_reminders);
+
+        recyclerView = (RecyclerView) findViewById(R.id.show_event_reminders_card_list);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
         sharedPrefData=new SharedPrefData(this);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Events");
-        keys=sharedPrefData.getEventReminderKeys();
+        eventKeys =sharedPrefData.getEventReminderKeys();
         events=new Vector<Event>();
-        for (String key:keys){
+        for (String key: eventKeys){
             mDatabase.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -71,16 +72,11 @@ public class ShowEventRemindersActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        recList.setAdapter(new EventAdapter(events));
+        recyclerView.setAdapter(new EventAdapter(events));
     }
 
     private void setupUI() {
 
-    }
-    void showEvent(String event){
-        Intent intent=new Intent(ShowEventRemindersActivity.this,ShowEventActivity.class);
-        intent.putExtra("EVENT",event);
-        startActivity(intent);
     }
     public boolean onCreateOptionsMenu(Menu menu) {
 

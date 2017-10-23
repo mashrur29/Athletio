@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Running"
-        android:id="@+id/trackworkoutmenurunningbt"
+        android:id="@+id/track_workout_layout_running_button"
         android:layout_gravity="center"/>
     <Space
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cycling"
-        android:id="@+id/trackworkoutmenucyclingbt"/>
+        android:id="@+id/track_workout_layout_cycling_button"/>
     <Space
         android:layout_width="match_parent"
         android:layout_height="15dp" />
@@ -30,5 +30,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Treadmill VR"
-        android:id="@+id/trackworkoutmenutreadmillvrbt"/>
+        android:id="@+id/track_workout_layout_treadmill_vr_button"/>
 </LinearLayout>

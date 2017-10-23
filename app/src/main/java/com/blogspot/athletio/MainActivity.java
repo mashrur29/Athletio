@@ -27,14 +27,10 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
 
-    //rem
-    TextView callorie,stepCount;
-    //end rem
+    TextView callorieTextview, stepCountTextview;
 
-
-
-    Thread t;
-    boolean b=true;
+    Thread viewThread;
+    boolean viewThreadRunning =true;
 
     @Override
     protected void onStart() {
@@ -51,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
 
         updateUI();
-        t = new Thread() {
+        viewThread = new Thread() {
             @Override
             public void run() {
                 try {
-                    while (!isInterrupted()&&b) {
+                    while (!isInterrupted()&& viewThreadRunning) {
                         Thread.sleep(1000);
                         runOnUiThread(new Runnable() {
                             @Override
@@ -69,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        t.start();
+        viewThread.start();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
 
         mAuthListener=new FirebaseAuth.AuthStateListener() {
@@ -84,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void setupUI(){
-        callorie=(TextView)findViewById(R.id.maincalorie);
-        stepCount=(TextView)findViewById(R.id.mainsteps);
+        callorieTextview =(TextView)findViewById(R.id.main_layout_callorie_textview);
+        stepCountTextview =(TextView)findViewById(R.id.main_layout_steps_textview);
 
 
     }
@@ -93,15 +89,15 @@ public class MainActivity extends AppCompatActivity {
     void updateUI(){
 
         SharedPreferences calorieMapPref = MainActivity.this.getSharedPreferences(SharedPrefData.CALORIEMAP, MODE_PRIVATE);
-        callorie.setText(""+calorieMapPref.getInt(new Day().toString(),0));
+        callorieTextview.setText(""+calorieMapPref.getInt(new Day().toString(),0));
         SharedPreferences stepCountMapPref = MainActivity.this.getSharedPreferences(SharedPrefData.STEPCOUNTMAP, MODE_PRIVATE);
-        stepCount.setText(""+stepCountMapPref.getInt(new Day().toString(),0));
+        stepCountTextview.setText(""+stepCountMapPref.getInt(new Day().toString(),0));
 
 
     }
 
     void signOut(){
-        b=false;
+        viewThreadRunning =false;
         SharedPrefData sharedPrefData=new SharedPrefData(MainActivity.this);
         sharedPrefData.clear();
         Intent intent=new Intent(MainActivity.this, FirebaseUploadService.class);
@@ -117,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        b=false;
+        viewThreadRunning =false;
     }
     public boolean onCreateOptionsMenu(Menu menu) {
 

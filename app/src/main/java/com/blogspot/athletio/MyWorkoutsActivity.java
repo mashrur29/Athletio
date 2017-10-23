@@ -30,7 +30,7 @@ public class MyWorkoutsActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Vector<String> workoutKeys=new Vector<String>();
     List<Workout> workouts=new Vector<Workout>();
-    RecyclerView recList;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +41,10 @@ public class MyWorkoutsActivity extends AppCompatActivity {
 
         setupUI();
 
-       recList = (RecyclerView) findViewById(R.id.myWorkoutCardList);
+       recyclerView = (RecyclerView) findViewById(R.id.my_workout_layout_card_list);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
         mWorkoutkeyDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -92,15 +92,11 @@ public class MyWorkoutsActivity extends AppCompatActivity {
 
     void updateUI(){
 
-        recList.setAdapter(new WorkoutAdapter(workouts));
+        recyclerView.setAdapter(new WorkoutAdapter(workouts));
 
     }
 
-    void showWorkout(String key){
-        Intent intent=new Intent(MyWorkoutsActivity.this,ShowWorkoutActivity.class);
-        intent.putExtra("WorkoutKey",key);
-        startActivity(intent);
-    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.blogspot.athletio.ShowEventRemindersActivity">
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/eventReminderCardList"
+        android:id="@+id/show_event_reminders_card_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

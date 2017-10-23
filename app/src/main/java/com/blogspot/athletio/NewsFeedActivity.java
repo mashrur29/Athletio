@@ -10,7 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,17 +34,16 @@ public class NewsFeedActivity extends AppCompatActivity {
     List<Post> posts=new Vector<Post>();
 
 
-    TextView tv;
-    Button searchpbt,postbt;
-    RecyclerView recList;
+    Button searchPersonsButton, postButton;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
-        recList = (RecyclerView) findViewById(R.id.newsFeedCardList);
+        recyclerView = (RecyclerView) findViewById(R.id.news_feed_layout_card_list);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
 
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Posts");
@@ -70,19 +68,19 @@ public class NewsFeedActivity extends AppCompatActivity {
 
     private void updateUI() {
         Collections.reverse(posts);
-        recList.setAdapter(new PostAdapter(posts));
+        recyclerView.setAdapter(new PostAdapter(posts));
     }
 
     private void setupUI() {
-        searchpbt=(Button)findViewById(R.id.newsfeedsearchpersonbt);
-        searchpbt.setOnClickListener(new View.OnClickListener() {
+        searchPersonsButton =(Button)findViewById(R.id.news_feed_layout_search_person_button);
+        searchPersonsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(NewsFeedActivity.this,ShowUserListActivity.class));
             }
         });
-        postbt=(Button)findViewById(R.id.newsfeedpostbt);
-        postbt.setOnClickListener(new View.OnClickListener() {
+        postButton =(Button)findViewById(R.id.news_feed_layout_post_button);
+        postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(NewsFeedActivity.this,PostPublishActivity.class));
