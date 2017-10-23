@@ -51,11 +51,13 @@ public class ShowEventRemindersActivity extends AppCompatActivity {
             mDatabase.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Event event=new Event(dataSnapshot.getValue().toString());
-                    event.key=dataSnapshot.getKey().toString();
-                    events.add(event);
+                   if(dataSnapshot.getValue()!=null){
+                       Event event=new Event(dataSnapshot.getValue().toString());
+                       event.key=dataSnapshot.getKey().toString();
+                       events.add(event);
 
-                    updateUI();
+                       updateUI();
+                   }
                 }
 
                 @Override

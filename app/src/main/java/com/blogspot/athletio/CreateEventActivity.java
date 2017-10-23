@@ -109,6 +109,7 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
                 else {
                     createEvent(new Day(eventDay,eventMonth,eventYear),eventHour,eventMin, startLatLng,Event.FOOTBALLTYPE,Integer.parseInt(eventDurationEdittext.getText().toString())*60,eventTitleEdittext.getText().toString(),eventDescriptionEdittext.getText().toString());
                 }
+                finish();
 
             }
         });

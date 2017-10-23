@@ -2,14 +2,19 @@ package services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.blogspot.athletio.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import general.Day;
+import general.SmallStep;
+import general.User;
 import storage.SharedPrefData;
 
 /**
@@ -36,9 +41,11 @@ public class FirebaseUploadService extends Service {
 
                 synchronized (mDatabase) {
                     if (sharedPrefData.getUser() != null){
-
-                        mDatabase.child("userData").setValue(sharedPrefData.getUser().userData);
-                        mDatabase.child("userInfo").setValue(sharedPrefData.getUser().getUserInfo());
+                        User user=sharedPrefData.getUser();
+                        mDatabase.child("userData").setValue(user.userData);
+                        mDatabase.child("userInfo").setValue(user.getUserInfo());
+                        SharedPreferences stepCountMapPref = FirebaseUploadService.this.getSharedPreferences(SharedPrefData.STEPCOUNTMAP, MODE_PRIVATE);
+                        FirebaseDatabase.getInstance().getReference().child("Steps").child(mAuth.getCurrentUser().getUid()).setValue(new SmallStep(user.userInfo.getDisplayName(),stepCountMapPref.getInt(new Day().toString(),0)));
                         Log.d(TAG, sharedPrefData.getUser().toString());
                     }
 
