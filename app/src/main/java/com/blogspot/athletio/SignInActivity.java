@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+///activity that allows to sign in
+//Homepage of app
 public class SignInActivity extends AppCompatActivity {
 
     final int RC_SIGN_IN=2;

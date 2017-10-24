@@ -31,6 +31,8 @@ import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
+///Retrives Data from view objects and creates a post
+
 public class PostPublishActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;

@@ -25,6 +25,7 @@ import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
+///Shows all the event reminders
 public class ShowEventRemindersActivity extends AppCompatActivity {
     SharedPrefData sharedPrefData;
     DatabaseReference mDatabase;
@@ -43,6 +44,8 @@ public class ShowEventRemindersActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
+
+        ///Retrieves event reminder from local storage and fetch the details
         sharedPrefData=new SharedPrefData(this);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Events");
         eventKeys =sharedPrefData.getEventReminderKeys();

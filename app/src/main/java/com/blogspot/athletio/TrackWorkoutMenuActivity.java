@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
-
+///Activity allows user to choose the type of workout they want to track
 public class TrackWorkoutMenuActivity extends AppCompatActivity {
     Button runningButton, cyclingButton, treadmillButton;
 
@@ -53,6 +53,8 @@ public class TrackWorkoutMenuActivity extends AppCompatActivity {
 
     }
 
+
+    ///Opens Treadmill VR app
     public static boolean openApp(Context context, String packageName, String appname){
         PackageManager manager=context.getPackageManager();
         Intent i = manager.getLaunchIntentForPackage(packageName);

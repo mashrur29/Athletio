@@ -33,7 +33,7 @@ import general.SmallWorkout;
 import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
-
+///Shows all people tracking workout at this moment
 public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapReadyCallback {
     final static int INTERVAL=5000;
 
@@ -52,6 +52,8 @@ public class OnlineWorkoutActivity extends AppCompatActivity  implements OnMapRe
             initMap();
             locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+
+            ///Sets camera view to current user's location initially
             locationListener = new android.location.LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {

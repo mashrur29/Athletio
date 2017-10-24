@@ -40,6 +40,9 @@ import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
+
+///Displays the map of a single run or cycling workout tracked
+
 public class ShowWorkoutActivity extends AppCompatActivity implements OnMapReadyCallback {
     Workout workout;
     DatabaseReference mDatabase;
@@ -47,7 +50,7 @@ public class ShowWorkoutActivity extends AppCompatActivity implements OnMapReady
 
 
 
-    TextView tv;
+    TextView dataOfWorkoutTextview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +77,7 @@ public class ShowWorkoutActivity extends AppCompatActivity implements OnMapReady
 
     }
     private void setupUI() {
-        tv=(TextView)findViewById(R.id.show_workout_layout_textview);
+        dataOfWorkoutTextview =(TextView)findViewById(R.id.show_workout_layout_textview);
     }
     private void updateUI() {
         Vector<LatLng>latLngs=workout.getVector();
@@ -88,7 +91,7 @@ public class ShowWorkoutActivity extends AppCompatActivity implements OnMapReady
         }
         gotoloc(latLngs.get(0).latitude,latLngs.get(0).longitude,15);
         getAddress(latLngs.get(0).latitude,latLngs.get(0).longitude);
-        tv.setText(workout.distanceInMeters+" "+workout.timeInSec);
+        dataOfWorkoutTextview.setText(workout.distanceInMeters+"m "+workout.timeInSec/60+"minute");
 
     }
 

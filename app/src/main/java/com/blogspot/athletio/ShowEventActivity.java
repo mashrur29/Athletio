@@ -30,7 +30,7 @@ import general.Event;
 import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
-
+///Shows details of a Event and allows to toggle reminder
 public class ShowEventActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     Event event;

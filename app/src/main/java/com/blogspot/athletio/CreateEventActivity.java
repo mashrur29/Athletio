@@ -32,12 +32,11 @@ import general.Event;
 import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
-
+///Allows User to create an event
 public class CreateEventActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     public static final int STARTLATREQ=0;
     public static final int STOPLATREQ=1;
-
 
     DatabaseReference mDatabase,mUserDatabase;
     FirebaseAuth mAuth;
@@ -49,6 +48,7 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
     EditText eventTitleEdittext,eventDurationEdittext,eventDistanceEdittext,eventDescriptionEdittext;
     Button submitButton, choooseStartLocationButton, choooseStopLocationButton;
     Spinner eventTypeSpinner,eventHourSpinner,eventMinSpinner,eventDaySpinner,eventMonthSpinner,eventYearSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,21 +129,23 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
         });
     }
 
-
+    ///Calls to get event stop location from map
     private void chooseStopLat() {
         startActivityForResult(new Intent(CreateEventActivity.this,ChooseLatFromMapActivity.class),CreateEventActivity.STOPLATREQ);
     }
 
+    ///Calls to get event start location from map
     private void chooseStartLat() {
         startActivityForResult(new Intent(CreateEventActivity.this,ChooseLatFromMapActivity.class),CreateEventActivity.STARTLATREQ);
     }
-
+    ///Uploads event to online database
     private void createEvent(Day day,int hour,int min,LatLng start,LatLng stop, int type, double distanceInMeters, long durationInSec,String title,String description){
         String key=mDatabase.push().getKey();
         mDatabase.child(key).setValue(new Event(day,hour,min,mAuth.getCurrentUser().getUid().toString(),mAuth.getCurrentUser().getDisplayName(),start,stop,type,distanceInMeters,durationInSec,title,description));
         mUserDatabase.child(mAuth.getCurrentUser().getUid()).child("Events").child(key).setValue(key);
 
     }
+    ///Uploads event to online database
     private void createEvent(Day day,int hour,int min,LatLng start, int type,  long durationInSec,String title,String description){
         String key=mDatabase.push().getKey();
         mDatabase.child(key).setValue(new Event(day,hour,min,mAuth.getCurrentUser().getUid().toString(),mAuth.getCurrentUser().getDisplayName(),start,type,durationInSec,title,description));
@@ -226,18 +228,6 @@ public class CreateEventActivity extends AppCompatActivity implements AdapterVie
         return;
     }
 
-    public String getAddress(double lat, double lng) {
-        Geocoder geocoder = new Geocoder(CreateEventActivity.this, Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
-            Address obj = addresses.get(0);
-            String add = obj.getAddressLine(0);
-            return add;
-        } catch (IOException e) {
-
-        }
-        return null;
-    }
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();

@@ -20,6 +20,8 @@ import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
+
+///Allows user to make changes of their birthday,height
 public class SettingsActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 

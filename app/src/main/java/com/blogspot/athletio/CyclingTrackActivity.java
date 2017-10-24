@@ -60,7 +60,6 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
     DatabaseReference mDatabase,mCurrentWorkoutDb;
     FirebaseAuth mAuth;
 
-
     TextView dataTextview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +76,7 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
         setupUI();
         date =new Date();
 
+        ///Initialize map, Set location listener and draw polynomial line on map
         if (gservicesAvailable()) {
             initMap();
             locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -216,7 +216,7 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
 
     }
 
-
+    ///Updates map camera position,zoom
     private void gotoloc(double lat, double lng, float zoom) {
         LatLng ll = new LatLng(lat, lng);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
@@ -237,6 +237,7 @@ public class CyclingTrackActivity extends AppCompatActivity  implements OnMapRea
         mCurrentWorkoutDb.setValue(null);
     }
 
+    ///Returns distance between two lat lngs
     public double haversine(double lat1, double lng1, double lat2, double lng2) {
         int r = 6371; // average radius of the earth in km
         double dLat = Math.toRadians(lat2 - lat1);

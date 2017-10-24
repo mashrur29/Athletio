@@ -29,7 +29,7 @@ import java.util.Locale;
 import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
-
+//allows user to pick a location and returns the latlng to previous activity
 public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap mgoogleMap;
@@ -92,18 +92,7 @@ public class ChooseLatFromMapActivity extends AppCompatActivity implements OnMap
 
     }
 
-    public String getAddress(double lat, double lng) {
-        Geocoder geocoder = new Geocoder(ChooseLatFromMapActivity.this, Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
-            Address obj = addresses.get(0);
-            String add = obj.getAddressLine(0);
-            return add;
-        } catch (Exception e) {
 
-        }
-        return null;
-    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mgoogleMap=googleMap;

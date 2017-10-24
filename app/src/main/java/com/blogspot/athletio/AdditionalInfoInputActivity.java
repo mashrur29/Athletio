@@ -51,6 +51,8 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         setContentView(R.layout.activity_additional_info_input);
 
         setupUI();
+
+        //makes the layout invisible
         final RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.additional_info_input_layout);
         relativeLayout.setVisibility(View.INVISIBLE);
 
@@ -58,7 +60,8 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
         sharedPrefData=new SharedPrefData(this);
 
-
+        //if the user is logged in then moves it to mainactivity,if user is signed up, download user
+        //saves it in local storage , Else makes signUp form visible
         if(sharedPrefData.getSaved()==true){
             startActivity(new Intent(AdditionalInfoInputActivity.this,MainActivity.class));
             finish();
@@ -95,7 +98,7 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
             });
         }
 
-
+        //Retrieves data from SignUp form and saves it into local and online database
         mFirebaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

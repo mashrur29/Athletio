@@ -41,6 +41,8 @@ import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
+
+///Tracks workout of running type
 public class RunningTrackActivity  extends AppCompatActivity implements OnMapReadyCallback {
 
     final static int INTERVAL=5000;
@@ -80,6 +82,7 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
             initMap();
             locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+            ///Listener to get location after some interval and updates UI according to that
             locationListener = new android.location.LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
@@ -215,7 +218,7 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
 
     }
 
-
+    ///Updates camera view
     private void gotoloc(double lat, double lng, float zoom) {
         LatLng ll = new LatLng(lat, lng);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
@@ -237,6 +240,7 @@ public class RunningTrackActivity  extends AppCompatActivity implements OnMapRea
 
     }
 
+    ///Returns distance between two latlng points
     public double haversine(
             double lat1, double lng1, double lat2, double lng2) {
         int r = 6371; // average radius of the earth in km

@@ -47,6 +47,8 @@ public class NewsFeedActivity extends AppCompatActivity {
 
 
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Posts");
+
+        ///Retrives posts from online database
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

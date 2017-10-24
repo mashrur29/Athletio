@@ -14,6 +14,9 @@ import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
+
+///Shows profile of a person
+
 public class ShowProfileActivity extends AppCompatActivity {
     String UID;
 

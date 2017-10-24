@@ -25,6 +25,8 @@ import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
+///Allows to search for presons and visit their profile
+
 public class ShowUserListActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
 
