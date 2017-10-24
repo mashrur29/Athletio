@@ -6,6 +6,7 @@ import utility.JsonObjectParser;
  * Created by tanvir on 9/27/17.
  */
 
+//Holds Short info about user
 public class SmallUser {
     public String UID;
     public String name;

@@ -8,6 +8,8 @@ import utility.JsonObjectParser;
  * Created by tanvir on 10/10/17.
  */
 
+
+/// Holds small info of a workout
 public class SmallWorkout {
     public int type;
     public LatLng latLng;
