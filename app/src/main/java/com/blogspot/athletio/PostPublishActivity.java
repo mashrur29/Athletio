@@ -79,12 +79,12 @@ public class PostPublishActivity extends AppCompatActivity {
 
     private void publishPost(String body) {
         if(type==Post.PHOTO){
-            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),postId,body,photoUri,Post.PHOTO,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
+            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl().toString(),mAuth.getCurrentUser().getDisplayName(),postId,body,photoUri,Post.PHOTO,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
             mDatabase.child(postId).setValue(post);
         }
         else{
             postId=mDatabase.push().getKey();
-            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getDisplayName(),postId,body,Post.TEXT,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
+            Post post=new Post(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getPhotoUrl().toString(),mAuth.getCurrentUser().getDisplayName(),postId,body,Post.TEXT,new Day(), Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
             mDatabase.child(postId).setValue(post);
         }
 

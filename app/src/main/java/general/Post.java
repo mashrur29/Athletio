@@ -11,6 +11,7 @@ public class Post {
     public static final int PHOTO=1;
 
     public String UID;
+    public String UDisplayPicURI;
     public String uName;
     public String postId;
     public String body;
@@ -20,8 +21,9 @@ public class Post {
     public int hour;
     public int min;
 
-    public Post(String UID, String uName, String postId, String body, int type,Day day,int hour,int min) {
+    public Post(String UID,String UDisplayPicURI, String uName, String postId, String body, int type,Day day,int hour,int min) {
         this.UID = UID;
+        this.UDisplayPicURI=UDisplayPicURI;
         this.uName = uName;
         this.postId = postId;
         this.body = body;
@@ -31,8 +33,9 @@ public class Post {
         this.min=min;
     }
 
-    public Post(String UID, String uName, String postId, String body, String photoUri, int type,Day day,int hour,int min) {
+    public Post(String UID,String UDisplayPicURI, String uName, String postId, String body, String photoUri, int type,Day day,int hour,int min) {
         this.UID = UID;
+        this.UDisplayPicURI=UDisplayPicURI;
         this.uName = uName;
         this.postId = postId;
         this.body = body;
@@ -46,6 +49,7 @@ public class Post {
     public Post(String jsonStr) {
         JsonObjectParser jsonObjectParser=new JsonObjectParser(jsonStr);
         this.UID=jsonObjectParser.getString("UID");
+        this.UDisplayPicURI=jsonObjectParser.getString("UDisplayPicURI");
         this.uName=jsonObjectParser.getString("uName");
         this.postId=jsonObjectParser.getString("postId");
         this.body=jsonObjectParser.getString("body");
@@ -62,6 +66,7 @@ public class Post {
     public String toString() {
         return "Post{" +
                 "UID='" + UID + '\'' +
+                ", UDisplayPicURI='" + UDisplayPicURI + '\'' +
                 ", uName='" + uName + '\'' +
                 ", postId='" + postId + '\'' +
                 ", body='" + body + '\'' +
