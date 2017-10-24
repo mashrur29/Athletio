@@ -4,6 +4,8 @@ package stepdetector;
  * Created by tanvir on 8/28/17.
  */
 
+//////////---Stolen code
+///Detects steps from accelerometer data
 public class StepDetector {
 
     private static final int ACCEL_RING_SIZE = 50;

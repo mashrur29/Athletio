@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by tanvir on 8/24/17.
  */
-
+///This class takes a Json String and returns values according to the field
 public class JsonObjectParser {
 
     HashMap<String, String> map = new HashMap<String, String>();

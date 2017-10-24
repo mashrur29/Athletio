@@ -22,7 +22,7 @@ import storage.SharedPrefData;
 /**
  * Created by tanvir on 8/28/17.
  */
-
+/// Service to listen for steps
 public class StepDetectorService extends Service implements SensorEventListener, StepListener {
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;

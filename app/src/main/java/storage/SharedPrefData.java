@@ -16,7 +16,7 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * Created by tanvir on 8/29/17.
  */
-
+///manages local storage(SharedPreferences)
 public class SharedPrefData {
     public Context context;
 
@@ -39,38 +39,8 @@ public class SharedPrefData {
     public SharedPrefData(Context context) {
         this.context = context;
     }
-    public void saveEventReminderKey(String key,int reqId){
-        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putInt(key, reqId);
-        editor.commit();
-    }
-    public Vector<String> getEventReminderKeys(){
 
-        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
-        Map<String,?> mp= pref.getAll();
-        Vector<String> ret=new Vector<String>();
-        for(Map.Entry<String,?> entry : mp.entrySet()){
-            ret.add(entry.getKey().toString());
-
-        }
-        ret.remove(SharedPrefData.LATEST);
-        return ret;
-    }
-    public int getEventReminderKey(String key){
-        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
-        return pref.getInt(key,-1);
-    }
-    public boolean hasEventReminderKey(String key){
-        return getEventReminderKey(key)!=-1;
-    }
-    public void removeEventKey(String key){
-
-        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.remove(key);
-        editor.apply();
-    }
+    ///Saves user object into local storage
     public void saveUser(User user){
         clear();
 
@@ -114,6 +84,8 @@ public class SharedPrefData {
         editorSaved.putInt(SAVED,1);
         editorSaved.commit();
     }
+
+    ///Remove user form local storage
     public void clear(){
         SharedPreferences pref = context.getSharedPreferences(USERINFO, MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
@@ -142,10 +114,14 @@ public class SharedPrefData {
         editorSaved.putInt(SAVED,0);
         editorSaved.commit();
     }
+
+    ///Returns if user is saved in local storage
     public boolean getSaved(){
         SharedPreferences prefSaved = context.getSharedPreferences(SAVED, MODE_PRIVATE);
         return prefSaved.getInt(SAVED,0)==1;
     }
+
+    ///Retrieve user from local storage
     public User getUser(){
         if(!getSaved())return null;
         SharedPreferences pref = context.getSharedPreferences(USERINFO, MODE_PRIVATE);
@@ -186,6 +162,45 @@ public class SharedPrefData {
         ret.userData.setStepCountMap(stepCountMap);
         ret.userData.setCalorieMap(calorieMap);
         return ret;
+    }
+
+    ///Save event reminder int local storage
+    public void saveEventReminderKey(String key,int reqId){
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(key, reqId);
+        editor.commit();
+    }
+
+    ///Returns saved event reminders
+    public Vector<String> getEventReminderKeys(){
+
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        Map<String,?> mp= pref.getAll();
+        Vector<String> ret=new Vector<String>();
+        for(Map.Entry<String,?> entry : mp.entrySet()){
+            ret.add(entry.getKey().toString());
+
+        }
+        ret.remove(SharedPrefData.LATEST);
+        return ret;
+    }
+    ///Returns event reminder notification request id
+    public int getEventReminderKey(String key){
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        return pref.getInt(key,-1);
+    }
+    ///Returns if a event reminder is saved
+    public boolean hasEventReminderKey(String key){
+        return getEventReminderKey(key)!=-1;
+    }
+    ///Removes event Reminder
+    public void removeEventKey(String key){
+
+        SharedPreferences pref = context.getSharedPreferences(EVENTS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.remove(key);
+        editor.apply();
     }
 
 

@@ -3,6 +3,8 @@ package stepdetector;
 /**
  * Created by tanvir on 8/28/17.
  */
+//////////---Stolen code
+///Proccesses accelerometer data
 public class SensorFilter {
 
     private SensorFilter() {

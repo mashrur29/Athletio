@@ -50,26 +50,9 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additional_info_input);
 
-        yearSpinner = (Spinner) findViewById(R.id.create_event_layout_year_spinner);
-        monthSpinner = (Spinner) findViewById(R.id.create_event_layout_month_spinner);
-        daySpinner = (Spinner) findViewById(R.id.create_event_layout_day_spinner);
-        genderSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_gender_spinner);
-        height=(EditText)findViewById(R.id.additional_info_input_layout_height_edittext);
-        weight=(EditText)findViewById(R.id.additional_info_input_layout_weight_edittext);
-        addItemOnYearSpinner();
-        addItemOnDaySpinner();
-        addItemOnMonthSpinner();
-        addItemOnGenderSpinner();
-        yearSpinner.setOnItemSelectedListener(this);
-        monthSpinner.setOnItemSelectedListener(this);
-        daySpinner.setOnItemSelectedListener(this);
-        genderSpinner.setOnItemSelectedListener(this);
-        mFirebaseButton=(Button)findViewById(R.id.additional_info_input_layout_submit_button);
-
-
+        setupUI();
         final RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.additional_info_input_layout);
         relativeLayout.setVisibility(View.INVISIBLE);
-
 
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
@@ -144,6 +127,26 @@ public class AdditionalInfoInputActivity extends AppCompatActivity  implements A
 
             }
         });
+    }
+
+    private void setupUI() {
+        yearSpinner = (Spinner) findViewById(R.id.create_event_layout_year_spinner);
+        monthSpinner = (Spinner) findViewById(R.id.create_event_layout_month_spinner);
+        daySpinner = (Spinner) findViewById(R.id.create_event_layout_day_spinner);
+        genderSpinner = (Spinner) findViewById(R.id.additional_info_input_layout_gender_spinner);
+        height=(EditText)findViewById(R.id.additional_info_input_layout_height_edittext);
+        weight=(EditText)findViewById(R.id.additional_info_input_layout_weight_edittext);
+        addItemOnYearSpinner();
+        addItemOnDaySpinner();
+        addItemOnMonthSpinner();
+        addItemOnGenderSpinner();
+        yearSpinner.setOnItemSelectedListener(this);
+        monthSpinner.setOnItemSelectedListener(this);
+        daySpinner.setOnItemSelectedListener(this);
+        genderSpinner.setOnItemSelectedListener(this);
+        mFirebaseButton=(Button)findViewById(R.id.additional_info_input_layout_submit_button);
+
+
     }
 
 

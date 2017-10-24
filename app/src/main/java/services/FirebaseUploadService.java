@@ -20,7 +20,7 @@ import storage.SharedPrefData;
 /**
  * Created by tanvir on 8/26/17.
  */
-
+///Service that uploads changes to online database continuously
 public class FirebaseUploadService extends Service {
 
     public static final String TAG = "FirebaseUploadService";

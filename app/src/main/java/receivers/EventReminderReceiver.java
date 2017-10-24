@@ -20,7 +20,7 @@ import com.blogspot.athletio.R;
 import com.blogspot.athletio.ShowEventActivity;
 
 import storage.SharedPrefData;
-
+/// Set event notification and alarm
 public class EventReminderReceiver extends BroadcastReceiver{
 
     @Override
