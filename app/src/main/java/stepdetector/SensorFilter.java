@@ -3,7 +3,7 @@ package stepdetector;
 /**
  * Created by tanvir on 8/28/17.
  */
-//////////---Stolen code
+/// Stolen from : http://www.gadgetsaint.com/android/create-pedometer-step-counter-android/#.We8VRp-WZhE
 ///Proccesses accelerometer data
 public class SensorFilter {
 
