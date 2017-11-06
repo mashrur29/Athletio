@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+	<category> 
+      		<pattern>HI</pattern>
+      		<template><random>
+        		<li>Hello</li>
+       	 		<li>Hello, how are you?</li>
+        		<li>Hello, how may i help you?</li>
+       		</random></template>
+  	</category>
+	
+	<category> 
+      		<pattern>HI *</pattern>
+      		<template><random>
+        		<li>Hello</li>
+       	 		<li>Hello, how are you?</li>
+        		<li>Hello, how may i help you?</li>
+       		</random></template>
+  	</category>
+
+	<category> 
+      		<pattern>HELLO</pattern>
+      		<template><random>
+        		<li>Hello</li>
+       	 		<li>Hello, how are you?</li>
+        		<li>Hello, how may i help you?</li>
+       		</random></template>
+  	</category>
+	
+	<category> 
+      		<pattern>HELLO *</pattern>
+      		<template><random>
+        		<li>Hello</li>
+       	 		<li>Hello, how are you?</li>
+        		<li>Hello, how may i help you?</li>
+       		</random></template>
+  	</category>
+	
+	<category> 
+      		<pattern>* purpose</pattern>
+      		<template>You want to know my <set name = "topic">purpose</set></template>  
+  	</category>
+
+	<topic name = "purpose">
+      		<category>
+         		<pattern> * </pattern>
+         		<template><random>
+        			<li>Well i am here to help you regarding any health related query</li>
+       	 			<li>If you have any health issue you can seek for my help</li>
+        			<li>I am here for your service</li>
+       			</random></template>
+      		</category>
+   	</topic>
+	
+	<category> 
+      		<pattern>* job</pattern>
+      		<template>You want to know my <set name = "topic">job</set></template>  
+  	</category>
+
+	<topic name = "job">
+      		<category>
+         		<pattern> * </pattern>
+         		<template><random>
+        			<li>Well i am here to help you regarding any health related query</li>
+       	 			<li>If you have any health issue you can seek for my help</li>
+        			<li>I am here for your service</li>
+       			</random></template>
+      		</category>
+   	</topic>
+	
+	<category> 
+      		<pattern>* botmaster</pattern>
+      		<template>My botmaster is Mashrur Rashik</template>  
+  	</category>
+
+	<category> 
+      		<pattern>botmaster</pattern>
+      		<template>My botmaster is Mashrur Rashik</template>  
+  	</category>
+
+	<category> 
+      		<pattern>* botmaster *</pattern>
+      		<template>My botmaster is Mashrur Rashik</template>  
+  	</category>
+
+	<category> 
+      		<pattern>botmaster *</pattern>
+      		<template>My botmaster is Mashrur Rashik</template>  
+  	</category>
+
+	
+			
+
+</aiml>
+

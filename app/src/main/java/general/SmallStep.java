@@ -20,4 +20,12 @@ public class SmallStep {
         this.steps=jsonObjectParser.getInt("steps");
 
     }
+
+    @Override
+    public String toString() {
+        return "SmallStep{" +
+                "name='" + name + '\'' +
+                ", steps=" + steps +
+                '}';
+    }
 }

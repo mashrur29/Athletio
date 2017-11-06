@@ -1,10 +1,9 @@
 package general;
 
+import java.util.List;
+
 import utility.JsonObjectParser;
 
-/**
- * Created by tanvir on 9/27/17.
- */
 
 public class Post {
     public static final int TEXT=0;
@@ -20,8 +19,42 @@ public class Post {
     public Day day;
     public int hour;
     public int min;
+    public int nLikes;
+    public int nComments;
+    public List<Comment> cList;
 
-    public Post(String UID,String UDisplayPicURI, String uName, String postId, String body, int type,Day day,int hour,int min) {
+    public Post(String UID, String UDisplayPicURI, String uName, String postId, String body, String photoUri, int type, Day day, int hour, int min, int nLikes, int nComments, List<Comment> cList) {
+        this.UID = UID;
+        this.UDisplayPicURI = UDisplayPicURI;
+        this.uName = uName;
+        this.postId = postId;
+        this.body = body;
+        this.photoUri = photoUri;
+        this.type = type;
+        this.day = day;
+        this.hour = hour;
+        this.min = min;
+        this.nLikes = nLikes;
+        this.nComments = nComments;
+        this.cList = cList;
+    }
+
+    public Post(String UID, String UDisplayPicURI, String uName, String postId, String body, String photoUri, int type, Day day, int hour, int min, int nLikes, int nComments) {
+        this.UID = UID;
+        this.UDisplayPicURI = UDisplayPicURI;
+        this.uName = uName;
+        this.postId = postId;
+        this.body = body;
+        this.photoUri = photoUri;
+        this.type = type;
+        this.day = day;
+        this.hour = hour;
+        this.min = min;
+        this.nLikes = nLikes;
+        this.nComments = nComments;
+    }
+
+    public Post(String UID, String UDisplayPicURI, String uName, String postId, String body, int type, Day day, int hour, int min) {
         this.UID = UID;
         this.UDisplayPicURI=UDisplayPicURI;
         this.uName = uName;
@@ -57,10 +90,18 @@ public class Post {
         this.day=new Day(jsonObjectParser.getString("day"));
         this.hour=jsonObjectParser.getInt("hour");
         this.min=jsonObjectParser.getInt("min");
+        this.nLikes=jsonObjectParser.getInt("nLikes");
         if(this.type==Post.PHOTO){
             this.photoUri=jsonObjectParser.getString("photoUri");
         }
+
+/*        HashMap<String, String> mapTemp;
+        mapTemp = new JsonObjectParser(jsonObjectParser.getString("commentMap")).getMap();
+        for(Map.Entry m:mapTemp.entrySet()){
+            cList.add(new Comment(m.getValue().toString()));
+        }*/
     }
+
 
     @Override
     public String toString() {
@@ -78,3 +119,4 @@ public class Post {
                 '}';
     }
 }
+

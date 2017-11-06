@@ -1,15 +1,16 @@
 package com.blogspot.athletio;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+
+import adapters.PostListAdapter;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -18,131 +19,149 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Vector;
 
-import adapters.PostAdapter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import general.Post;
 import services.FirebaseUploadService;
 import stepdetector.StepDetector;
 import storage.SharedPrefData;
 
-public class NewsFeedActivity extends AppCompatActivity {
-    DatabaseReference mDatabase;
+public class NewsFeedActivity extends Activity {
+    private static final String TAG = NewsFeedActivity.class.getSimpleName();
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference usersRef = ref.child("NewsFeedUser");
+    Map<String, Post> users = new HashMap<>();
+    Button createPostButton, searchButton, messengerButton;
 
-    List<Post> posts=new Vector<Post>();
+    private ListView listView;
 
+    private PostListAdapter listAdapter;
+    ;
+    private List<Post> posts;
 
-    Button searchPersonsButton, postButton;
-    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
-        recyclerView = (RecyclerView) findViewById(R.id.news_feed_layout_card_list);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(llm);
+        createPostButton = (Button) findViewById(R.id.news_feed_new_post);
+        listView = (ListView) findViewById(R.id.news_feed_listview);
+        searchButton = (Button) findViewById(R.id.news_feed_search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NewsFeedActivity.this , ShowUserListActivity.class));
+            }
+        });
 
+        messengerButton = (Button) findViewById(R.id.news_feed_msg_button);
+        messengerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NewsFeedActivity.this , OnlineChatLogin.class));
+            }
+        });
 
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Posts");
-
-        ///Retrives posts from online database
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        posts = new ArrayList<Post>();
+        listAdapter = new PostListAdapter(this, posts);
+        listView.setAdapter(listAdapter);
+        FirebaseDatabase.getInstance().getReference().child("Posts").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot d:dataSnapshot.getChildren()){
-                    Post post=new Post(d.getValue().toString());
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    Post post = new Post(d.getValue().toString());
                     posts.add(post);
-                    updateUI();
                 }
+                Collections.reverse(posts);
+                listAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
+
         });
-        setupUI();
 
-    }
-
-    private void updateUI() {
-        Collections.reverse(posts);
-        recyclerView.setAdapter(new PostAdapter(posts));
-    }
-
-    private void setupUI() {
-        searchPersonsButton =(Button)findViewById(R.id.news_feed_layout_search_person_button);
-        searchPersonsButton.setOnClickListener(new View.OnClickListener() {
+        createPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(NewsFeedActivity.this,ShowUserListActivity.class));
+            public void onClick(View v) {
+                Intent intent = new Intent(NewsFeedActivity.this, PostPublishActivity.class);
+                startActivity(intent);
             }
         });
-        postButton =(Button)findViewById(R.id.news_feed_layout_post_button);
-        postButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(NewsFeedActivity.this,PostPublishActivity.class));
-            }
-        });
-
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuHome:
-                startActivity(new Intent(this,MainActivity.class));
+            case R.id.menu_home:
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
-            case R.id.menuTrackWorkout:
+            case R.id.menu_track_workout:
                 startActivity(new Intent(this, TrackWorkoutMenuActivity.class));
                 return true;
-            case R.id.menuOnlineWorkout:
+            case R.id.menu_online_workout:
                 startActivity(new Intent(this, OnlineWorkoutActivity.class));
                 return true;
-            case R.id.menuMyWorkouts:
+            case R.id.menu_my_workouts:
                 startActivity(new Intent(this, MyWorkoutsActivity.class));
                 return true;
-            case R.id.menuExcersices:
+            case R.id.menu_excersices:
                 startActivity(new Intent(this, ExercisesActivity.class));
                 return true;
-            case R.id.menuSocial:
+            case R.id.menu_social:
                 startActivity(new Intent(this, NewsFeedActivity.class));
                 return true;
-            case R.id.menuEvents:
+            case R.id.menu_events:
                 startActivity(new Intent(this, EventsActivity.class));
                 return true;
-            case R.id.menuEventReminder:
+            case R.id.menu_event_reminder:
                 startActivity(new Intent(this, ShowEventRemindersActivity.class));
                 return true;
-            case R.id.menuCreateEvent:
+            case R.id.menu_create_event:
                 startActivity(new Intent(this, CreateEventActivity.class));
                 return true;
-            case R.id.menuSettings:
+            case R.id.menu_nearby_place:
+                startActivity(new Intent(this, MapsActivity.class));
+                return true;
+            case R.id.menu_chat_bot:
+                startActivity(new Intent(this, ChatBotMain.class));
+                return true;
+            case R.id.menu_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
-            case R.id.menuSignOut:
+            case R.id.menu_signout:
                 signOut();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-    void signOut(){
-        SharedPrefData sharedPrefData=new SharedPrefData(this);
+
+    void signOut() {
+        SharedPrefData sharedPrefData = new SharedPrefData(this);
         sharedPrefData.clear();
-        Intent intent=new Intent(this, FirebaseUploadService.class);
+        Intent intent = new Intent(this, FirebaseUploadService.class);
         stopService(intent);
 
-        Intent intent2=new Intent(this, StepDetector.class);
+        Intent intent2 = new Intent(this, StepDetector.class);
         stopService(intent2);
         FirebaseAuth.getInstance().signOut();
     }
+
+
 }
+

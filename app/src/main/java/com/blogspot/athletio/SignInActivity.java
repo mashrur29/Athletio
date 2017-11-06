@@ -21,6 +21,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+
+import general.SocialUser;
+import utility.FirebaseUtils;
 
 ///activity that allows to sign in
 //Homepage of app
@@ -94,7 +99,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         }
     }
-    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -103,6 +108,15 @@ public class SignInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+                            SocialUser socialUser = new SocialUser();
+                            String photoUrl = null;
+                            if (account.getPhotoUrl() != null) {
+                                socialUser.setPhotoUrl(account.getPhotoUrl().toString());
+                            }
+
+                            socialUser.setEmail(account.getEmail());
+                            socialUser.setUser(account.getDisplayName());
+                            socialUser.setUid(mAuth.getCurrentUser().getUid());
                             // updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

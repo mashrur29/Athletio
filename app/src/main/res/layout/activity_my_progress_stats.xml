@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.blogspot.athletio.MyProgressStatsActivity">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show my Steps Count Progress"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/gradient_button_blue"
+        android:id="@+id/progress_layout_step_count_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show my Calory Burnt Progress"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:padding="5dp"
+        android:background="@drawable/gradient_button_blue"
+        android:textAlignment="center"
+        android:id="@+id/progress_layout_calory_burnt_button"/>
+
+    <Button
+        android:id="@+id/progress_layout_weight_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/gradient_button_blue"
+        android:padding="5dp"
+        android:text="Show my Weight Progress"
+        android:textAlignment="center" />
+</LinearLayout>

@@ -9,6 +9,11 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="search here.."
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:inputType="text"
+        android:maxLines="1"
         android:id="@+id/exercises_layout_search_edittext"/>
 
     <android.support.v7.widget.RecyclerView

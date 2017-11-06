@@ -96,4 +96,9 @@ public class UserInfo {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getBirthday()
+    {
+        String tmp = birthDate+"/"+birthMonth+"/"+birthYear;
+        return tmp;
+    }
 }

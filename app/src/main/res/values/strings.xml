@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Athletio</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="web_client_id">688464344610-de07p2m5lbl5o9auos1ivb7abkt33ffm.apps.googleusercontent.com</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "688464344610-de07p2m5lbl5o9auos1ivb7abkt33ffm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blogspot.athletio",
+            "certificate_hash": "bad7b8e8d37a6f16ae7b64a2db12d98bf861498e"
+          }
+        },
+        {
           "client_id": "688464344610-253kr2dcummd9p9e9oisbqhukcbhcbb9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

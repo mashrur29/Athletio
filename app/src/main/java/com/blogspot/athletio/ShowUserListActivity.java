@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -29,22 +33,43 @@ import storage.SharedPrefData;
 
 public class ShowUserListActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
-
+    EditText userListSearchEditTextView;
     List<SmallUser> smallUsers;
     RecyclerView recyclerView;
+    private SmallUserCardAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_user_list);
 
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Userlist");
-        smallUsers=new Vector<SmallUser>();
+        smallUsers=new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.show_user_list_layout_card_list);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
+        mAdapter = new SmallUserCardAdapter(smallUsers);
+        recyclerView.setAdapter(mAdapter);
+        userListSearchEditTextView = (EditText) findViewById(R.id.user_list_search_editview);
+        userListSearchEditTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                ShowUserListActivity.this.mAdapter.getFilter().filter(s);
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ShowUserListActivity.this.mAdapter.getFilter().filter(s);
+            }
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                ShowUserListActivity.this.mAdapter.getFilter().filter(s);
+            }
+        });
         setupUI();
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -67,10 +92,12 @@ public class ShowUserListActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        recyclerView.setAdapter(new SmallUserCardAdapter(smallUsers));
+        mAdapter = new SmallUserCardAdapter(smallUsers);
+        recyclerView.setAdapter(mAdapter);
     }
 
     private void setupUI() {
+        userListSearchEditTextView = (EditText) findViewById(R.id.user_list_search_editview);
 
     }
 
@@ -87,37 +114,55 @@ public class ShowUserListActivity extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuHome:
+            case R.id.menu_home:
                 startActivity(new Intent(this,MainActivity.class));
+                finish();
                 return true;
-            case R.id.menuTrackWorkout:
+            case R.id.menu_track_workout:
                 startActivity(new Intent(this, TrackWorkoutMenuActivity.class));
+                finish();
                 return true;
-            case R.id.menuOnlineWorkout:
+            case R.id.menu_online_workout:
                 startActivity(new Intent(this, OnlineWorkoutActivity.class));
+                finish();
                 return true;
-            case R.id.menuMyWorkouts:
+            case R.id.menu_my_workouts:
                 startActivity(new Intent(this, MyWorkoutsActivity.class));
+                finish();
                 return true;
-            case R.id.menuExcersices:
+            case R.id.menu_excersices:
                 startActivity(new Intent(this, ExercisesActivity.class));
+                finish();
                 return true;
-            case R.id.menuSocial:
-                startActivity(new Intent(this, NewsFeedActivity.class));
+            case R.id.menu_social:
+                startActivity(new Intent(this, SocialMainActivity.class));
+                finish();
                 return true;
-            case R.id.menuEvents:
+            case R.id.menu_events:
                 startActivity(new Intent(this, EventsActivity.class));
+                finish();
                 return true;
-            case R.id.menuEventReminder:
+            case R.id.menu_event_reminder:
                 startActivity(new Intent(this, ShowEventRemindersActivity.class));
+                finish();
                 return true;
-            case R.id.menuCreateEvent:
+            case R.id.menu_create_event:
                 startActivity(new Intent(this, CreateEventActivity.class));
+                finish();
                 return true;
-            case R.id.menuSettings:
+            case R.id.menu_nearby_place:
+                startActivity(new Intent(this, MapsActivity.class));
+                finish();
+                return true;
+            case R.id.menu_chat_bot:
+                startActivity(new Intent(this, ChatBotMain.class));
+                finish();
+                return true;
+            case R.id.menu_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
+                finish();
                 return true;
-            case R.id.menuSignOut:
+            case R.id.menu_signout:
                 signOut();
                 return true;
             default:

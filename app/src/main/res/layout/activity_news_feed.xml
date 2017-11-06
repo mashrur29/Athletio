@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.blogspot.athletio.NewsFeedActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/news_feed_new_post"
             android:layout_width="match_parent"
+            android:text="Create Post"
             android:layout_height="wrap_content"
-            android:text="Search for Persons"
-            android:id="@+id/news_feed_layout_search_person_button"/>
+            android:layout_weight="1"/>
         <Button
+            android:id="@+id/news_feed_search_button"
             android:layout_width="match_parent"
+            android:text="Search"
             android:layout_height="wrap_content"
-            android:text="Post"
-            android:textAlignment="center"
-            android:id="@+id/news_feed_layout_post_button"/>
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/news_feed_msg_button"
+            android:layout_width="match_parent"
+            android:text="Messenger"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/news_feed_layout_card_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+    <ListView
+        android:id="@+id/news_feed_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null" />
+
+
 </LinearLayout>

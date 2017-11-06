@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+	
+	<category> 
+      		<pattern>MUSCLE INJURY</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	<category> 
+      		<pattern>* MUSCLE INJURY</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	<category> 
+      		<pattern>MUSCLE INJURY *</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	<category> 
+      		<pattern>* MUSCLE INJURY *</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	<category> 
+      		<pattern>MUSCLE STRAIN</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	<category> 
+      		<pattern>* MUSCLE STRAIN</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	<category> 
+      		<pattern>MUSCLE STRAIN *</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	<category> 
+      		<pattern>* MUSCLE STRAIN *</pattern>
+      		<template>So you want to know about <set name = "topic">muscle injury</set>?</template>
+  	</category>
+
+	
+
+	<topic name = "muscle injury">
+      		<category>
+         		<pattern> * </pattern>
+         		<template><random>
+        			<li>Generally, muscle strain is injury to muscle as a result of strenuous activity</li>
+       			</random></template>
+      		</category>
+
+
+		<category> 
+      			<pattern>* good</pattern>
+      			<template><random>
+        			<li>It isn't that bad either, but.......</li>
+       	 			<li>Well, a severe muscle strain can result in a muscle tear</li>
+       			</random></template>
+  		</category>
+
+		<category> 
+      			<pattern>CAUSES</pattern>
+      			<template>
+				Muscle strains can happen to anyone. They occur in the course of normal activities of the day or 					as a result of sudden use of a muscle with activity.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>CAUSES *</pattern>
+      			<template>
+				Muscle strains can happen to anyone. They occur in the course of normal activities of the day or 					as a result of sudden use of a muscle with activity.
+			</template>
+  		</category>
+		
+
+		<category> 
+      			<pattern>* CAUSES</pattern>
+      			<template>
+				Muscle strains can happen to anyone. They occur in the course of normal activities of the day or 					as a result of sudden use of a muscle with activity.
+			</template>
+  		</category>
+
+
+		<category> 
+      			<pattern>* CAUSES *</pattern>
+      			<template>
+				Muscle strains can happen to anyone. They occur in the course of normal activities of the day or 					as a result of sudden use of a muscle with activity.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>CURE * MUSCLE INJURY</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>* CURE * MUSCLE INJURY</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>CURE</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+		
+		<category> 
+      			<pattern>TREATMENT * MUSCLE INJURY</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>* TREATMENT * MUSCLE INJURY</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>TREATMENT</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>REMEDY * MUSCLE INJURY</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>* REMEDY * MUSCLE INJURY</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+
+		<category> 
+      			<pattern>REMEDY</pattern>
+      			<template>
+				Rest your muscles, take some break, and don't go for any physical exercise today.
+			</template>
+  		</category>
+		
+   	</topic>
+
+</aiml>

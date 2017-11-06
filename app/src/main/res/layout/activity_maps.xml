@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/activity_map_text_field_edittext"
+        android:layout_width="290dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="Enter Place"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/activity_map_search_map_button"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/activity_map_text_field_edittext"
+        android:background="@drawable/gradient_button_blue"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="GO"
+        android:textColor="@color/cardview_light_background" />
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nearby_places_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_map_text_field_edittext"
+        android:layout_centerHorizontal="true"
+        tools:context="com.blogspot.athletio.MapsActivity" />
+
+    <Button
+        android:id="@+id/activity_map_nearby_hospitals_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/activity_map_nearby_park_button"
+        android:background="@drawable/gradient_button_blue"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="Hospitals"
+        android:textColor="@color/cardview_light_background" />
+
+    <Button
+        android:id="@+id/activity_map_nearby_park_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/gradient_button_blue"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="Park"
+        android:textColor="@color/cardview_light_background" />
+
+    <Button
+        android:id="@+id/activity_map_nearby_gym_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/activity_map_nearby_hospitals_button"
+        android:background="@drawable/gradient_button_blue"
+        android:contextClickable="true"
+        android:onClick="onClick"
+        android:text="   Gym   "
+        android:textColor="@color/cardview_light_background" />
+
+    <Button
+        android:id="@+id/activity_map_nearby_stadium_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/activity_map_nearby_gym_button"
+        android:background="@drawable/gradient_button_blue"
+        android:contextClickable="true"
+        android:onClick="onClick"
+
+        android:text="Stadium"
+        android:textColor="@color/cardview_light_background" />
+
+
+</RelativeLayout>
