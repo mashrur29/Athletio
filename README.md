@@ -1,5 +1,8 @@
-# Athletio ![Alt text](https://github.com/mashrur29/Athletio/blob/master/app/src/main/res/mipmap-hdpi/ic_launcher.png?raw=true "Optional Title")
-
+# Athletio 
+                                              
+                                                  ![Alt text](https://github.com/mashrur29/Athletio/blob/master/app/src/main/res/mipmap-hdpi/ic_launcher.png?raw=true "Optional Title")
+                                                  
+                                              
   This is my first android project. It is mainly a team project and my team members consist of Md. Tanvir Alam and Kashob Kumar Roy. 
   The three of us worked hard equally to bring this project to life. 
   
