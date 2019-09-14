@@ -1,6 +1,6 @@
 # Athletio 
   
-  ![Alt text](https://github.com/mashrur29/Athletio/blob/master/athletio_poster.pdf?raw=true)
+  [Intro.pdf](https://github.com/mashrur29/Athletio/blob/master/athletio_poster.pdf)
                                               
   This is my first android project. It is mainly a team project and my team members consist of Md. Tanvir Alam and Kashob Kumar Roy. 
   The three of us worked hard equally to bring this project to life. 
